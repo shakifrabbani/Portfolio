@@ -3,22 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>M. Shakif Rabbani · Software Engineer</title>
+<title>M. Shakif Rabbani · Full-stack Software Engineer</title>
 <meta name="description" content="M. Shakif Rabbani is a full-stack software engineer in Lahore, Pakistan, building React, React Native, Node.js and PHP products for real clients, including booking sites, point-of-sale apps and restaurant systems.">
 <meta name="author" content="M. Shakif Rabbani">
 <link rel="canonical" href="https://shakifrabbani.github.io/Portfolio/">
+
 <meta property="og:type" content="profile">
-<meta property="og:title" content="M. Shakif Rabbani · Software Engineer">
-<meta property="og:description" content="Full-stack engineer shipping booking sites, POS apps, restaurant systems and mobile apps for real clients.">
+<meta property="og:site_name" content="M. Shakif Rabbani">
+<meta property="og:title" content="M. Shakif Rabbani · Full-stack Software Engineer">
+<meta property="og:description" content="Booking sites, POS apps, restaurant systems and mobile apps shipped for real clients. React, React Native, Node.js, PHP.">
 <meta property="og:url" content="https://shakifrabbani.github.io/Portfolio/">
-<meta property="og:image" content="https://shakifrabbani.github.io/Portfolio/assets/shakif-rabbani.jpg">
-<meta name="twitter:card" content="summary">
-<meta name="theme-color" content="#1a2739">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a2739'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' text-anchor='middle' fill='%23efb03a'%3ESR%3C/text%3E%3C/svg%3E">
+<meta property="og:image" content="https://shakifrabbani.github.io/Portfolio/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="M. Shakif Rabbani, Full-stack Software Engineer">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="theme-color" content="#070b14" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;600;700&family=Zilla+Slab:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist+Mono:wght@400..600&family=Geist:wght@400..700&display=swap">
+<link rel="stylesheet" href="css/style.css">
 <script>
+  /* Apply a saved theme before first paint to avoid a flash. */
   (function () {
     try {
       var t = localStorage.getItem("theme");
@@ -26,6 +37,7 @@
     } catch (e) {}
   })();
 </script>
+<script src="js/main.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -42,828 +54,490 @@
   "sameAs": ["https://github.com/shakifrabbani", "https://www.linkedin.com/in/shakif-rabbani-902899264"]
 }
 </script>
-<style>
-/* Layout: a navy identity band (nav + hero) carried over from the CV header, then light reading sections for work,
-   experience, toolkit and education, closing on a navy contact band. One printed POS receipt holds the hero's numbers. */
-:root {
-  --bg: #f4f6f9;
-  --bg-alt: #ffffff;
-  --surface: #ffffff;
-  --surface-2: #eef2f6;
-  --ink: #142032;
-  --muted: #536176;
-  --line: #d9e0e8;
-  --line-strong: #b4bfcc;
-  --accent: #efb03a;
-  --accent-hover: #f4c063;
-  --accent-ink: #8f5d07;
-  --on-accent: #1b1404;
-  --ok: #3fbf74;
-  --band: #1a2739;
-  --band-2: #121d2b;
-  --band-ink: #f1f4f8;
-  --band-muted: #aebbcc;
-  --band-line: rgba(255, 255, 255, 0.13);
-  --glow: rgba(239, 176, 58, 0.14);
-  --chip: #1a2739;
-  --chip-ink: #f1f4f8;
-  --paper: #fffdf8;
-  --paper-ink: #1d2633;
-  --paper-muted: #6b7380;
-  --receipt-shadow: rgba(5, 10, 20, 0.45);
-  --shadow: 0 1px 2px rgba(20, 32, 50, 0.06), 0 10px 28px rgba(20, 32, 50, 0.09);
-
-  --font-display: "Zilla Slab", Rockwell, "Roboto Slab", Georgia, serif;
-  --font-body: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
-
-  --radius: 14px;
-  --wrap: 1160px;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0c1420;
-    --bg-alt: #101a29;
-    --surface: #131e2e;
-    --surface-2: #0f1826;
-    --ink: #e8edf4;
-    --muted: #9cabbf;
-    --line: #233248;
-    --line-strong: #3a4c66;
-    --accent: #f2b84b;
-    --accent-hover: #f6c96f;
-    --accent-ink: #f2b84b;
-    --on-accent: #1b1404;
-    --ok: #4fd187;
-    --band: #111c2b;
-    --band-2: #09101a;
-    --band-ink: #eef2f7;
-    --band-muted: #a3b1c4;
-    --band-line: rgba(255, 255, 255, 0.1);
-    --glow: rgba(242, 184, 75, 0.1);
-    --chip: #1d2b40;
-    --chip-ink: #eef2f7;
-    --paper: #f2efe7;
-    --paper-ink: #1d2633;
-    --paper-muted: #636b77;
-    --receipt-shadow: rgba(0, 0, 0, 0.6);
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.35);
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0c1420;
-  --bg-alt: #101a29;
-  --surface: #131e2e;
-  --surface-2: #0f1826;
-  --ink: #e8edf4;
-  --muted: #9cabbf;
-  --line: #233248;
-  --line-strong: #3a4c66;
-  --accent: #f2b84b;
-  --accent-hover: #f6c96f;
-  --accent-ink: #f2b84b;
-  --on-accent: #1b1404;
-  --ok: #4fd187;
-  --band: #111c2b;
-  --band-2: #09101a;
-  --band-ink: #eef2f7;
-  --band-muted: #a3b1c4;
-  --band-line: rgba(255, 255, 255, 0.1);
-  --glow: rgba(242, 184, 75, 0.1);
-  --chip: #1d2b40;
-  --chip-ink: #eef2f7;
-  --paper: #f2efe7;
-  --paper-ink: #1d2633;
-  --paper-muted: #636b77;
-  --receipt-shadow: rgba(0, 0, 0, 0.6);
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.35);
-  color-scheme: dark;
-}
-
-/* ---------- Base ---------- */
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 72px; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 1.0625rem;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-img { max-width: 100%; display: block; }
-a { color: inherit; }
-h1, h2, h3 { font-family: var(--font-display); line-height: 1.12; margin: 0; text-wrap: balance; }
-p { margin: 0; }
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
-.wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: clamp(16px, 4vw, 32px); }
-.ic { width: 18px; height: 18px; flex: none; }
-.skip {
-  position: absolute; left: 16px; top: -100px; z-index: 100;
-  background: var(--accent); color: var(--on-accent); padding: 10px 14px; border-radius: 8px; font-weight: 700;
-}
-.skip:focus { top: 16px; }
-
-/* ---------- Buttons ---------- */
-.btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  font: 600 1rem/1 var(--font-body);
-  padding: 14px 20px; border-radius: 10px; border: 1px solid transparent;
-  text-decoration: none; cursor: pointer;
-  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-}
-.btn-accent { background: var(--accent); color: var(--on-accent); }
-.btn-accent:hover { background: var(--accent-hover); transform: translateY(-1px); }
-.btn-ghost { border-color: var(--band-line); color: var(--band-ink); background: transparent; }
-.btn-ghost:hover { border-color: var(--band-muted); transform: translateY(-1px); }
-.btn-sm { padding: 10px 14px; font-size: 0.9375rem; }
-
-/* ---------- Header ---------- */
-.site-header {
-  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
-  background: var(--band); color: var(--band-ink);
-  border-bottom: 1px solid var(--band-line);
-}
-.nav { display: flex; align-items: center; gap: 24px; min-height: 64px; }
-.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
-.brand-mark {
-  display: grid; place-items: center; width: 36px; height: 36px; border-radius: 9px;
-  background: var(--accent); color: var(--on-accent);
-  font: 700 1rem/1 var(--font-display); letter-spacing: 0.02em;
-}
-.brand-name { font: 600 1.125rem/1 var(--font-display); }
-.nav-links { list-style: none; margin: 0 0 0 auto; padding: 0; display: flex; gap: 4px; }
-.nav-links a {
-  display: block; padding: 8px 12px; border-radius: 8px;
-  color: var(--band-muted); text-decoration: none; font-weight: 600; font-size: 0.9375rem;
-}
-.nav-links a:hover { color: var(--band-ink); background: var(--band-line); }
-.nav-actions { display: flex; align-items: center; gap: 8px; }
-.icon-btn {
-  display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px;
-  border: 1px solid var(--band-line); background: transparent; color: var(--band-ink); cursor: pointer;
-}
-.icon-btn:hover { border-color: var(--band-muted); }
-
-/* ---------- Hero ---------- */
-.hero {
-  position: relative; overflow: hidden;
-  background:
-    radial-gradient(640px 420px at 82% 18%, var(--glow), transparent 70%),
-    var(--band);
-  color: var(--band-ink);
-  padding-block: clamp(44px, 7vw, 88px) clamp(64px, 9vw, 112px);
-}
-.hero-grid {
-  display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr);
-  gap: clamp(36px, 5vw, 72px); align-items: center;
-}
-.status {
-  display: inline-flex; align-items: center; gap: 10px;
-  font: 500 0.8125rem/1.2 var(--font-mono); letter-spacing: 0.05em; text-transform: uppercase;
-  color: var(--band-muted); border: 1px solid var(--band-line); border-radius: 999px; padding: 7px 14px;
-}
-.dot { position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--ok); }
-.dot::after {
-  content: ""; position: absolute; inset: -4px; border-radius: 50%;
-  border: 2px solid var(--ok); opacity: 0; animation: pulse 2.4s ease-out infinite;
-}
-@keyframes pulse { 0% { transform: scale(0.6); opacity: 0.8; } 100% { transform: scale(1.7); opacity: 0; } }
-.hero-name { font-size: clamp(2.6rem, 6.2vw, 4.6rem); font-weight: 700; letter-spacing: -0.01em; margin-top: 22px; }
-.hero-role { font: 600 clamp(1.25rem, 2.1vw, 1.55rem)/1.3 var(--font-display); color: var(--accent); margin-top: 8px; }
-.hero-lede { font-size: clamp(1.15rem, 1.7vw, 1.35rem); line-height: 1.5; max-width: 34em; margin-top: 22px; }
-.hero-sub { color: var(--band-muted); max-width: 58ch; margin-top: 14px; }
-.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-.hero-links { list-style: none; padding: 0; margin: 26px 0 0; display: flex; flex-wrap: wrap; gap: 10px 22px; }
-.hero-links a {
-  display: inline-flex; align-items: center; gap: 8px;
-  color: var(--band-muted); text-decoration: none; font-weight: 600;
-}
-.hero-links a:hover { color: var(--band-ink); }
-
-.hero-visual { display: flex; flex-direction: column; align-items: center; }
-.portrait {
-  margin: 0; width: min(250px, 72%); aspect-ratio: 1; max-width: 100%;
-  border-radius: 50%; padding: 6px; background: var(--accent);
-  box-shadow: 0 0 0 12px var(--glow);
-}
-.portrait img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-
-/* Receipt: the one decorative moment. It "prints" once on load. */
-.receipt-wrap {
-  position: relative; z-index: 1; width: min(330px, 100%); margin-top: -34px;
-  rotate: -2deg;
-  filter: drop-shadow(0 18px 26px var(--receipt-shadow));
-  animation: print 1.1s steps(9, end) 0.15s backwards;
-}
-@keyframes print { from { clip-path: inset(0 0 58% 0); } to { clip-path: inset(0 0 0 0); } }
-.receipt {
-  background: var(--paper); color: var(--paper-ink);
-  font: 400 0.8125rem/1.5 var(--font-mono);
-  padding: 22px 22px 30px;
-  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 14px 100%;
-  mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 14px 100%;
-}
-.receipt-head { display: grid; gap: 2px; text-align: center; padding-bottom: 12px; border-bottom: 1px dashed var(--paper-muted); }
-.receipt-head strong { font-size: 1rem; font-weight: 600; letter-spacing: 0.22em; }
-.receipt-head span { color: var(--paper-muted); font-size: 0.75rem; }
-.receipt-items { width: 100%; border-collapse: collapse; margin-block: 10px 8px; }
-.receipt-items th {
-  text-align: left; font-weight: 500; color: var(--paper-muted);
-  font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; padding-bottom: 4px;
-}
-.receipt-items td { padding-block: 3px; vertical-align: top; }
-.receipt-items th:first-child, .receipt-items td:first-child { width: 4ch; font-weight: 600; font-variant-numeric: tabular-nums; }
-.receipt-line { display: flex; justify-content: space-between; gap: 12px; padding-block: 8px; border-top: 1px dashed var(--paper-muted); }
-.receipt-line.total { font-weight: 600; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.04em; }
-.barcode {
-  height: 42px; margin-top: 10px;
-  background: repeating-linear-gradient(90deg,
-    var(--paper-ink) 0 2px, transparent 2px 4px, var(--paper-ink) 4px 5px, transparent 5px 8px,
-    var(--paper-ink) 8px 11px, transparent 11px 12px, var(--paper-ink) 12px 13px, transparent 13px 15px,
-    var(--paper-ink) 15px 16px, transparent 16px 19px);
-}
-.receipt-foot { text-align: center; font-size: 0.6875rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--paper-muted); margin-top: 8px; }
-
-/* ---------- Sections ---------- */
-.section { padding-block: clamp(64px, 9vw, 112px); }
-.section--alt { background: var(--bg-alt); border-block: 1px solid var(--line); }
-.section-head { display: grid; gap: 12px; max-width: 720px; margin-bottom: clamp(32px, 5vw, 52px); }
-.eyebrow {
-  display: flex; align-items: center; gap: 10px;
-  font: 500 0.8125rem/1.2 var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--accent-ink);
-}
-.eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--accent); }
-.eyebrow--band { color: var(--accent); }
-.section-head h2 { font-size: clamp(2rem, 4vw, 2.85rem); font-weight: 700; }
-.section-intro { color: var(--muted); font-size: 1.125rem; max-width: 62ch; }
-
-/* ---------- Projects ---------- */
-.work-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 20px 40px; margin-bottom: clamp(32px, 5vw, 52px); }
-.work-head .section-head { margin-bottom: 0; }
-.legend {
-  list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 18px;
-  font: 500 0.8125rem/1 var(--font-mono); color: var(--muted);
-}
-.legend li { display: inline-flex; align-items: center; gap: 6px; }
-.projects { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 20px; }
-.project {
-  grid-column: span 2; min-width: 0;
-  display: flex; flex-direction: column; gap: 22px;
-  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: clamp(20px, 2.4vw, 28px);
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-.project:hover { border-color: var(--line-strong); transform: translateY(-3px); box-shadow: var(--shadow); }
-.project--feature { grid-column: span 3; }
-.project-top { flex: 1; display: grid; gap: 10px; align-content: start; }
-.project-kind { font: 500 0.75rem/1.3 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-.project h3 { font-size: 1.5rem; font-weight: 700; }
-.project--feature h3 { font-size: clamp(1.6rem, 2.4vw, 1.9rem); }
-.project-desc { color: var(--muted); }
-
-.sysmap {
-  display: grid; gap: 14px;
-  background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 16px;
-}
-.sysmap-nodes { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.sysmap-nodes li {
-  position: relative; display: inline-flex; align-items: center; gap: 7px;
-  padding: 7px 11px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
-  font-size: 0.875rem; font-weight: 600; line-height: 1.2;
-}
-.sysmap-nodes li .ic { width: 16px; height: 16px; color: var(--accent-ink); }
-.sysmap-nodes li::after {
-  content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: 15px; background: var(--line-strong);
-}
-.sysmap-base {
-  position: relative; z-index: 1;
-  border-top: 2px solid var(--accent); padding-top: 8px;
-  font: 500 0.75rem/1.3 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
-}
-.project-meta {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px;
-  padding-top: 16px; border-top: 1px solid var(--line);
-  font: 500 0.8125rem/1.3 var(--font-mono); color: var(--muted);
-}
-.project-link { display: inline-flex; align-items: center; gap: 6px; color: var(--accent-ink); font-weight: 600; text-decoration: none; }
-.project-link:hover { text-decoration: underline; text-underline-offset: 3px; }
-.project-link .ic { width: 15px; height: 15px; }
-
-/* ---------- Experience ---------- */
-.split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
-.split .section-head { margin-bottom: 0; }
-.exp-meta { font: 500 0.875rem/1.5 var(--font-mono); color: var(--muted); }
-.highlights { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 36px; }
-.highlights li { display: grid; gap: 8px; align-content: start; padding-top: 18px; border-top: 2px solid var(--line); }
-.highlights li:first-child { border-top-color: var(--accent); }
-.highlights h3 { font-size: 1.25rem; font-weight: 600; }
-.highlights p { color: var(--muted); }
-
-/* ---------- Toolkit ---------- */
-.toolkit { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
-.tool-group { display: grid; gap: 14px; align-content: start; padding-top: 18px; border-top: 2px solid var(--ink); }
-.tool-group h3, .label-sm {
-  font: 600 0.8125rem/1.2 var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
-}
-.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.chips li { padding: 6px 12px; border-radius: 8px; background: var(--chip); color: var(--chip-ink); font-weight: 600; font-size: 0.9375rem; line-height: 1.4; }
-.platforms { margin-top: clamp(40px, 6vw, 64px); display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px 40px; align-items: center; }
-.platforms ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-.platforms li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 10px; align-items: center; }
-.platforms li .ic { color: var(--accent-ink); width: 20px; height: 20px; }
-.platforms strong { font: 600 1.125rem/1.2 var(--font-display); }
-.platforms .count { grid-column: 1 / -1; font: 500 0.8125rem/1.2 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
-.pbar { grid-column: 1 / -1; height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
-.pbar i { display: block; height: 100%; width: var(--w); background: var(--accent); border-radius: 3px; }
-
-/* ---------- Education ---------- */
-.edu-list { list-style: none; margin: 0; padding: 0; display: grid; }
-.edu-item {
-  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 24px; align-items: center;
-  padding-block: 22px; border-top: 1px solid var(--line);
-}
-.edu-item:last-child { border-bottom: 1px solid var(--line); }
-.edu-when { grid-column: 1 / -1; font: 500 0.8125rem/1.2 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-.edu-item h3 { font-size: 1.375rem; font-weight: 600; }
-.edu-item p { color: var(--muted); }
-.edu-item .edu-score { font: 700 1.75rem/1 var(--font-display); color: var(--accent-ink); font-variant-numeric: tabular-nums; text-align: right; }
-.edu-score small { display: block; margin-top: 4px; font: 500 0.75rem/1.4 var(--font-mono); color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
-.langs { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 28px; }
-
-/* ---------- Contact ---------- */
-.contact { background: var(--band); color: var(--band-ink); padding-block: clamp(64px, 9vw, 112px); }
-.contact-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
-.contact-copy { display: grid; gap: 16px; }
-.contact h2 { font-size: clamp(2rem, 4.4vw, 3.2rem); font-weight: 700; }
-.contact-lede { color: var(--band-muted); font-size: 1.125rem; max-width: 48ch; }
-.contact .hero-ctas { margin-top: 12px; }
-.contact-list { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--band-line); }
-.contact-list li {
-  display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) auto; align-items: center; gap: 4px 12px;
-  min-height: 58px; padding-block: 10px; border-bottom: 1px solid var(--band-line);
-}
-.contact-list .label { font: 500 0.75rem/1.2 var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--band-muted); }
-.contact-list .value { font-weight: 600; color: var(--band-ink); text-decoration: none; overflow-wrap: anywhere; }
-.contact-list a.value:hover { color: var(--accent); }
-.copy-btn {
-  font: 600 0.8125rem/1 var(--font-mono); padding: 8px 12px; border-radius: 8px;
-  border: 1px solid var(--band-line); background: transparent; color: var(--band-ink); cursor: pointer;
-}
-.copy-btn:hover { border-color: var(--band-muted); }
-.site-footer { background: var(--band-2); color: var(--band-muted); font-size: 0.9375rem; padding-block: 22px; }
-.site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
-.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-
-/* ---------- Responsive ---------- */
-@media (max-width: 960px) {
-  .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .project, .project--feature { grid-column: span 1; }
-  .project:last-child { grid-column: 1 / -1; }
-  .toolkit { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 900px) {
-  .hero-grid { grid-template-columns: minmax(0, 1fr); }
-  .hero-visual { display: contents; }
-  .portrait { order: -1; width: 116px; padding: 4px; box-shadow: 0 0 0 8px var(--glow); }
-  .receipt-wrap { justify-self: center; margin-top: 4px; width: min(340px, 100%); }
-  .split, .contact-grid { grid-template-columns: minmax(0, 1fr); }
-  .platforms { grid-template-columns: minmax(0, 1fr); }
-}
-@media (max-width: 760px) {
-  .nav-links { display: none; }
-  .nav-actions { margin-left: auto; }
-}
-@media (max-width: 640px) {
-  .projects { grid-template-columns: minmax(0, 1fr); }
-  .project:last-child { grid-column: auto; }
-  .highlights { grid-template-columns: minmax(0, 1fr); }
-  .platforms ul { grid-template-columns: minmax(0, 1fr); gap: 18px; }
-}
-@media (max-width: 520px) {
-  .toolkit { grid-template-columns: minmax(0, 1fr); }
-  .brand-name { display: none; }
-  .contact-list li { grid-template-columns: minmax(0, 1fr) auto; }
-  .contact-list .label { grid-column: 1 / -1; }
-}
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation: none !important; transition: none !important; }
-}
-</style>
 </head>
 <body>
+
+<!-- Icon sprite -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <symbol id="ic-web" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M6.5 6.5h.01M9.5 6.5h.01"/></g></symbol>
-  <symbol id="ic-desktop" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></g></symbol>
-  <symbol id="ic-mobile" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2" width="11" height="20" rx="2.5"/><path d="M11 18h2"/></g></symbol>
-  <symbol id="ic-ticket" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 7h6M9 11h6M9 15h4"/></g></symbol>
-  <symbol id="ic-store" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9H3z"/><path d="M4.5 9v11h15V9"/><path d="M9.5 20v-6h5v6"/></g></symbol>
-  <symbol id="ic-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g></symbol>
-  <symbol id="ic-external" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4 10 14"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></g></symbol>
-  <symbol id="ic-download" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></g></symbol>
-  <symbol id="ic-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></symbol>
-  <symbol id="ic-moon" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></g></symbol>
-  <symbol id="ic-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></symbol>
-  <symbol id="ic-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
+  <defs>
+    <symbol id="ic-web" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M6.5 6.5h.01M9.5 6.5h.01"/></g></symbol>
+    <symbol id="ic-desktop" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></g></symbol>
+    <symbol id="ic-mobile" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2" width="11" height="20" rx="2.5"/><path d="M11 18h2"/></g></symbol>
+    <symbol id="ic-ticket" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 7h6M9 11h6M9 15h4"/></g></symbol>
+    <symbol id="ic-store" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9H3z"/><path d="M4.5 9v11h15V9"/><path d="M9.5 20v-6h5v6"/></g></symbol>
+    <symbol id="ic-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g></symbol>
+    <symbol id="ic-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></g></symbol>
+    <symbol id="ic-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+    <symbol id="ic-external" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4 10 14"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></g></symbol>
+    <symbol id="ic-download" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></g></symbol>
+    <symbol id="ic-arrow" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></g></symbol>
+    <symbol id="ic-arrow-up" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></g></symbol>
+    <symbol id="ic-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></g></symbol>
+    <symbol id="ic-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></g></symbol>
+    <symbol id="ic-menu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></g></symbol>
+    <symbol id="ic-close" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></g></symbol>
+    <symbol id="ic-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></symbol>
+    <symbol id="ic-moon" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></g></symbol>
+    <symbol id="ic-layout" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></g></symbol>
+    <symbol id="ic-server" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></g></symbol>
+    <symbol id="ic-db" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></g></symbol>
+    <symbol id="ic-git" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5.5" r="2.5"/><circle cx="6" cy="18.5" r="2.5"/><circle cx="18" cy="8" r="2.5"/><path d="M6 8v8M18 10.5c0 4-5 4-10 6.5"/></g></symbol>
+    <symbol id="ic-cloud" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 10.5 3.75 3.75 0 0 1 17.5 18z"/><path d="M9.5 13.5l2 2 3.5-3.5"/></g></symbol>
+    <symbol id="ic-offline" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 10.5 3.75 3.75 0 0 1 17.5 18z"/><path d="M4 4l16 16"/></g></symbol>
+    <symbol id="ic-layers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5z"/><path d="m2 13 10 5 10-5"/></g></symbol>
+    <symbol id="ic-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></symbol>
+    <symbol id="ic-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
+  </defs>
 </svg>
 
 <a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
 
 <header class="site-header">
-  <nav class="wrap nav" aria-label="Primary">
+  <nav class="nav" aria-label="Primary">
     <a class="brand" href="#top" aria-label="Shakif Rabbani, back to top">
       <span class="brand-mark" aria-hidden="true">SR</span>
       <span class="brand-name">Shakif Rabbani</span>
     </a>
     <ul class="nav-links">
+      <li class="nav-indicator" aria-hidden="true"></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#work">Work</a></li>
-      <li><a href="#experience">Experience</a></li>
+      <li><a href="#journey">Journey</a></li>
       <li><a href="#toolkit">Toolkit</a></li>
-      <li><a href="#education">Education</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to dark theme">
-        <svg class="ic" aria-hidden="true"><use href="#ic-moon"></use></svg>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to light theme">
+        <svg class="ic" aria-hidden="true"><use href="#ic-sun"></use></svg>
       </button>
-      <a class="btn btn-accent btn-sm" href="#contact">Contact me</a>
+      <a class="btn btn-primary btn-sm" href="#contact">Hire me</a>
+      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <svg class="ic" aria-hidden="true"><use href="#ic-menu"></use></svg>
+      </button>
     </div>
   </nav>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <ul>
+      <li><a href="#about">About <svg class="ic" aria-hidden="true"><use href="#ic-arrow"></use></svg></a></li>
+      <li><a href="#work">Work <svg class="ic" aria-hidden="true"><use href="#ic-arrow"></use></svg></a></li>
+      <li><a href="#journey">Journey <svg class="ic" aria-hidden="true"><use href="#ic-arrow"></use></svg></a></li>
+      <li><a href="#toolkit">Toolkit <svg class="ic" aria-hidden="true"><use href="#ic-arrow"></use></svg></a></li>
+      <li><a href="#contact">Contact <svg class="ic" aria-hidden="true"><use href="#ic-arrow"></use></svg></a></li>
+    </ul>
+  </div>
 </header>
 
-<section class="hero" id="top" aria-labelledby="hero-name">
-  <div class="wrap hero-grid">
+<!-- =================== HERO =================== -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="grid-lines"></div>
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+    <div class="fade-bottom"></div>
+  </div>
+
+  <div class="wrap hero-inner">
     <div class="hero-copy">
-      <p class="status"><span class="dot" aria-hidden="true"></span>Open to new roles · Lahore, Pakistan</p>
-      <h1 class="hero-name" id="hero-name">M. Shakif Rabbani</h1>
-      <p class="hero-role">Full-stack Software Engineer</p>
-      <p class="hero-lede">I build the software businesses run on, from booking sites and point-of-sale apps to kitchen systems and mobile apps. Five client products shipped across web, mobile and desktop in six months.</p>
-      <p class="hero-sub">BS in Software Engineering with a 3.54 CGPA. Comfortable owning a project alone from database to interface, or delivering within a team.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-accent" href="#work">See my work</a>
-        <a class="btn btn-ghost site-only" href="Shakif%20Rabbani%20Resume.pdf" target="_blank" rel="noopener">
-          <svg class="ic" aria-hidden="true"><use href="#ic-download"></use></svg>Download CV
-        </a>
+      <p class="hello" data-intro style="--i: 0">
+        <img src="assets/shakif-rabbani.jpg" alt="" width="68" height="68" fetchpriority="high">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span><strong>Open to new roles</strong> · Lahore, Pakistan</span>
+      </p>
+
+      <h1 class="hero-name" id="hero-title">
+        <span class="line"><span class="word" style="--i: 0">M.</span> <span class="word" style="--i: 1">Shakif</span></span>
+        <span class="line"><span class="word gradient-text" style="--i: 2">Rabbani</span></span>
+      </h1>
+
+      <p class="hero-role" data-intro style="--i: 3">Full-stack engineer who builds
+        <span class="rotator" aria-hidden="true"><span class="rotator-track"><span>booking sites</span><span>POS systems</span><span>restaurant apps</span><span>mobile apps</span><span>booking sites</span></span></span><span class="sr-only">booking sites, POS systems, restaurant apps and mobile apps</span>
+      </p>
+
+      <p class="hero-text" data-intro style="--i: 4">Five client products shipped across web, mobile and desktop in six months at Robonex. I'm comfortable owning a project alone from database to interface, or delivering within a team.</p>
+
+      <div class="hero-ctas" data-intro style="--i: 5">
+        <a class="btn btn-primary" href="#work" data-magnetic>See my work <svg class="ic ic-arrow" aria-hidden="true"><use href="#ic-arrow"></use></svg></a>
+        <a class="btn btn-ghost site-only" href="Shakif%20Rabbani%20Resume.pdf" target="_blank" rel="noopener" data-magnetic><svg class="ic" aria-hidden="true"><use href="#ic-download"></use></svg>Download CV</a>
       </div>
-      <ul class="hero-links">
-        <li><a href="https://github.com/shakifrabbani" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#ic-github"></use></svg>GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/shakif-rabbani-902899264" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#ic-linkedin"></use></svg>LinkedIn</a></li>
-        <li><a href="#contact"><svg class="ic" aria-hidden="true"><use href="#ic-mail"></use></svg>shakifrabbani@gmail.com</a></li>
+
+      <ul class="socials" data-intro style="--i: 6">
+        <li><a href="https://github.com/shakifrabbani" target="_blank" rel="noopener" aria-label="GitHub profile"><svg class="ic" aria-hidden="true"><use href="#ic-github"></use></svg></a></li>
+        <li><a href="https://www.linkedin.com/in/shakif-rabbani-902899264" target="_blank" rel="noopener" aria-label="LinkedIn profile"><svg class="ic" aria-hidden="true"><use href="#ic-linkedin"></use></svg></a></li>
+        <li><a href="mailto:shakifrabbani@gmail.com" aria-label="Email shakifrabbani@gmail.com"><svg class="ic" aria-hidden="true"><use href="#ic-mail"></use></svg></a></li>
       </ul>
     </div>
 
-    <div class="hero-visual">
-      <figure class="portrait">
-        <img src="assets/shakif-rabbani.jpg" alt="Portrait of M. Shakif Rabbani" width="480" height="480">
-      </figure>
-      <div class="receipt-wrap">
-        <aside class="receipt" aria-label="Career summary">
-          <div class="receipt-head">
-            <strong>ROBONEX</strong>
-            <span>DHA Rahbar, Lahore</span>
-            <span>Software Engineer · 04/2026 – Present</span>
+    <div class="pos-stage" data-intro style="--i: 3">
+      <p class="sr-only">Animated demo: an order is rung up on a point-of-sale screen, saved while the connection is offline, sent to the kitchen, then synced when the connection returns.</p>
+      <div class="pos-tilt" aria-hidden="true">
+        <div class="pos">
+          <div class="pos-bar">
+            <span class="pos-lights"><i></i><i></i><i></i></span>
+            <span class="pos-title">POS · Counter 1</span>
+            <span class="pos-status" data-state="online"><i></i><span data-pos-status>Online</span></span>
           </div>
-          <table class="receipt-items">
-            <thead><tr><th scope="col">Qty</th><th scope="col">Item</th></tr></thead>
-            <tbody>
-              <tr><td>5</td><td>Client products shipped</td></tr>
-              <tr><td>6</td><td>Months to ship them</td></tr>
-              <tr><td>3</td><td>Platforms: web, mobile, desktop</td></tr>
-              <tr><td>3</td><td>Retail clients on my POS</td></tr>
-            </tbody>
-          </table>
-          <div class="receipt-line"><span>BS Software Eng.</span><span>CGPA 3.54</span></div>
-          <div class="receipt-line total"><span>Status</span><span>Open to new roles</span></div>
-          <div class="barcode" aria-hidden="true"></div>
-          <p class="receipt-foot">Thank you for visiting</p>
-        </aside>
+          <div class="pos-alert"><div class="pos-alert-inner"><p class="pos-alert-msg"><svg class="ic"><use href="#ic-offline"></use></svg><span data-pos-alert>No connection. Orders are saved on this device.</span></p></div></div>
+          <div class="pos-body">
+            <div class="pos-order"><strong>Order #1042</strong><span>Dine-in · Table 4</span></div>
+            <ul class="pos-rows">
+              <li class="pos-row" data-amount="1300"><span class="qty">2×</span><span><span class="name">Chicken Burger</span><span class="note">Extra cheese</span></span><span class="amt">Rs 1,300</span></li>
+              <li class="pos-row" data-amount="390"><span class="qty">1×</span><span><span class="name">Loaded Fries</span><span class="note">Large</span></span><span class="amt">Rs 390</span></li>
+              <li class="pos-row" data-amount="500"><span class="qty">2×</span><span><span class="name">Mint Lemonade</span><span class="note">Less ice</span></span><span class="amt">Rs 500</span></li>
+            </ul>
+            <div class="pos-total"><span>Total</span><strong data-pos-total>Rs 2,190</strong></div>
+            <div class="pos-charge">
+              <span class="charge">Charge <b data-pos-charge>Rs 2,190</b></span>
+              <span class="paid"><svg class="ic"><use href="#ic-check"></use></svg>Paid · sent to kitchen</span>
+            </div>
+          </div>
+        </div>
+        <div class="pos-ticket">
+          <div class="ticket-top"><span><svg class="ic"><use href="#ic-ticket"></use></svg>Kitchen</span><b>#1042</b></div>
+          <ul><li>2× Chicken Burger</li><li>1× Loaded Fries</li><li>2× Mint Lemonade</li></ul>
+          <span class="ticket-chip"><i></i>Preparing</span>
+        </div>
       </div>
+      <p class="pos-caption" aria-hidden="true">Animated sketch of the online and offline POS flow I build</p>
     </div>
+  </div>
+
+  <a class="scroll-cue" href="#about"><span>Scroll</span><i aria-hidden="true"></i></a>
+</section>
+
+<!-- =================== MARQUEE =================== -->
+<section class="marquee" aria-label="Technologies I work with">
+  <div class="marquee-track">
+    <ul class="marquee-list">
+      <li>React</li><li>React Native</li><li>TypeScript</li><li>JavaScript</li><li>Node.js</li><li>Express.js</li><li>PHP</li><li>MySQL</li><li>MongoDB</li><li>Firebase</li><li>Redux</li><li>Tailwind CSS</li><li>Electron</li><li>REST APIs</li><li>Git &amp; GitHub</li><li>Postman</li>
+    </ul>
+    <ul class="marquee-list" aria-hidden="true">
+      <li>React</li><li>React Native</li><li>TypeScript</li><li>JavaScript</li><li>Node.js</li><li>Express.js</li><li>PHP</li><li>MySQL</li><li>MongoDB</li><li>Firebase</li><li>Redux</li><li>Tailwind CSS</li><li>Electron</li><li>REST APIs</li><li>Git &amp; GitHub</li><li>Postman</li>
+    </ul>
   </div>
 </section>
 
 <main id="main">
-  <section class="section" id="work" aria-labelledby="work-title">
-    <div class="wrap">
-      <div class="work-head">
-        <header class="section-head">
-          <p class="eyebrow">Selected work</p>
-          <h2 id="work-title">Systems I've shipped for real businesses</h2>
-          <p class="section-intro">Five client products across web, mobile and desktop. Several combine a website, an admin panel, a desktop POS and mobile apps around one back end, connected through REST APIs I designed.</p>
-        </header>
-        <ul class="legend" aria-label="Diagram key">
-          <li><svg class="ic" aria-hidden="true"><use href="#ic-web"></use></svg>Web</li>
-          <li><svg class="ic" aria-hidden="true"><use href="#ic-desktop"></use></svg>Desktop</li>
-          <li><svg class="ic" aria-hidden="true"><use href="#ic-mobile"></use></svg>Mobile</li>
-        </ul>
+  <!-- =================== ABOUT =================== -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="wrap about-grid">
+      <div class="portrait-wrap" data-reveal>
+        <figure class="portrait">
+          <img src="assets/shakif-rabbani.jpg" alt="Portrait of M. Shakif Rabbani" width="480" height="480" loading="lazy" decoding="async">
+        </figure>
+        <span class="float-chip chip-a"><svg class="ic" aria-hidden="true"><use href="#ic-layers"></use></svg>5 products · 6 months</span>
+        <span class="float-chip chip-b"><svg class="ic" aria-hidden="true"><use href="#ic-desktop"></use></svg>Web · Mobile · Desktop</span>
       </div>
 
-      <div class="projects">
-        <article class="project project--feature">
-          <div class="project-top">
-            <p class="project-kind">Salon · Booking and point of sale</p>
-            <h3>Huma's Signature Salon</h3>
-            <p class="project-desc">A salon website where clients book appointments online, an admin panel for the team, and a desktop POS app for the counter.</p>
-          </div>
-          <div class="sysmap" role="img" aria-label="Three apps on one PHP and MySQL back end: booking website, admin panel and desktop POS">
-            <ul class="sysmap-nodes">
-              <li><svg class="ic"><use href="#ic-web"></use></svg>Booking website</li>
-              <li><svg class="ic"><use href="#ic-web"></use></svg>Admin panel</li>
-              <li><svg class="ic"><use href="#ic-desktop"></use></svg>Desktop POS</li>
-            </ul>
-            <p class="sysmap-base">One back end · PHP + MySQL</p>
-          </div>
-          <div class="project-meta">
-            <span>React · PHP · MySQL</span>
-            <a class="project-link" href="https://humassignaturesalon.com" target="_blank" rel="noopener">humassignaturesalon.com<svg class="ic" aria-hidden="true"><use href="#ic-external"></use></svg></a>
-          </div>
-        </article>
+      <div class="about-copy">
+        <p class="eyebrow" data-reveal>About me</p>
+        <h2 id="about-title" data-reveal style="--d: 60ms">I build the software that businesses run on.</h2>
+        <p class="lead" data-reveal style="--d: 120ms">I'm a Software Engineer with a BS in Software Engineering and hands-on experience shipping full-stack products for real clients. At Robonex I've built appointment booking, point-of-sale and restaurant management systems across web, mobile and desktop.</p>
+        <p data-reveal style="--d: 160ms">I'm comfortable owning a project alone, from the database to the interface, or delivering as part of a team.</p>
 
-        <article class="project project--feature">
-          <div class="project-top">
-            <p class="project-kind">Restaurant · Ordering, POS and kitchen</p>
-            <h3>Hot &amp; Spicy Restaurant System</h3>
-            <p class="project-desc">A full restaurant system with a website for menus and online ordering, an admin panel, a desktop POS, kitchen management and a mobile app.</p>
-          </div>
-          <div class="sysmap" role="img" aria-label="Five connected apps: ordering website, admin panel, desktop POS, kitchen management and mobile app">
-            <ul class="sysmap-nodes">
-              <li><svg class="ic"><use href="#ic-web"></use></svg>Ordering website</li>
-              <li><svg class="ic"><use href="#ic-web"></use></svg>Admin panel</li>
-              <li><svg class="ic"><use href="#ic-desktop"></use></svg>Desktop POS</li>
-              <li><svg class="ic"><use href="#ic-ticket"></use></svg>Kitchen management</li>
-              <li><svg class="ic"><use href="#ic-mobile"></use></svg>Mobile app</li>
-            </ul>
-            <p class="sysmap-base">One back end for every app</p>
-          </div>
-          <div class="project-meta">
-            <span>Web · Desktop · Mobile</span>
-            <span>5 connected apps</span>
-          </div>
-        </article>
+        <dl class="stats">
+          <div class="stat" data-reveal style="--d: 0ms"><dt>Client products shipped</dt><dd><span data-count="5">5</span></dd></div>
+          <div class="stat" data-reveal style="--d: 80ms"><dt>Months to ship them</dt><dd><span data-count="6">6</span></dd></div>
+          <div class="stat" data-reveal style="--d: 160ms"><dt>Platforms: web, mobile and desktop</dt><dd><span data-count="3">3</span></dd></div>
+          <div class="stat" data-reveal style="--d: 240ms"><dt>CGPA in BS Software Engineering</dt><dd class="gradient-text"><span data-count="3.54">3.54</span></dd></div>
+        </dl>
 
-        <article class="project">
-          <div class="project-top">
-            <p class="project-kind">Retail · Point of sale</p>
-            <h3>Retail POS System</h3>
-            <p class="project-desc">A point-of-sale system that runs online and offline, built for retail clients including Apex Mart, Dada Fabrics and Gems Traders.</p>
-          </div>
-          <div class="sysmap" role="img" aria-label="Deployed at three retail clients: Apex Mart, Dada Fabrics and Gems Traders">
-            <ul class="sysmap-nodes">
-              <li><svg class="ic"><use href="#ic-store"></use></svg>Apex Mart</li>
-              <li><svg class="ic"><use href="#ic-store"></use></svg>Dada Fabrics</li>
-              <li><svg class="ic"><use href="#ic-store"></use></svg>Gems Traders</li>
-            </ul>
-            <p class="sysmap-base">Desktop POS · online + offline</p>
-          </div>
-          <div class="project-meta">
-            <span>React · PHP · MySQL</span>
-            <span>3 retail clients</span>
-          </div>
-        </article>
-
-        <article class="project">
-          <div class="project-top">
-            <p class="project-kind">Property · Four-role platform</p>
-            <h3>Property Inspection App</h3>
-            <p class="project-desc">Web panels for admins and managers, plus mobile apps for property inspectors and their clients.</p>
-          </div>
-          <div class="sysmap" role="img" aria-label="Four apps on Firebase: admin panel, manager panel, inspector app and client app">
-            <ul class="sysmap-nodes">
-              <li><svg class="ic"><use href="#ic-web"></use></svg>Admin panel</li>
-              <li><svg class="ic"><use href="#ic-web"></use></svg>Manager panel</li>
-              <li><svg class="ic"><use href="#ic-mobile"></use></svg>Inspector app</li>
-              <li><svg class="ic"><use href="#ic-mobile"></use></svg>Client app</li>
-            </ul>
-            <p class="sysmap-base">Firebase</p>
-          </div>
-          <div class="project-meta">
-            <span>React Native · Firebase</span>
-            <span>4 user roles</span>
-          </div>
-        </article>
-
-        <article class="project">
-          <div class="project-top">
-            <p class="project-kind">Home services · Booking</p>
-            <h3>Home Service Platform</h3>
-            <p class="project-desc">A website for a platform where customers book home services.</p>
-          </div>
-          <div class="sysmap" role="img" aria-label="Customer booking website on a Node.js back end">
-            <ul class="sysmap-nodes">
-              <li><svg class="ic"><use href="#ic-web"></use></svg>Customer booking website</li>
-            </ul>
-            <p class="sysmap-base">Node.js back end</p>
-          </div>
-          <div class="project-meta">
-            <span>TypeScript · React · Node.js</span>
-            <span>Web platform</span>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--alt" id="experience" aria-labelledby="exp-title">
-    <div class="wrap split">
-      <header class="section-head">
-        <p class="eyebrow">Experience</p>
-        <h2 id="exp-title">Software Engineer at Robonex</h2>
-        <p class="exp-meta">04/2026 – Present<br>DHA Rahbar, Lahore · On-site</p>
-        <p class="section-intro">Delivered five client products across web, mobile and desktop in six months, some built independently and others as part of a team.</p>
-      </header>
-      <ul class="highlights">
-        <li>
-          <h3>Features built end to end</h3>
-          <p>React and React Native interfaces, Node.js, Express.js and PHP back ends, and MySQL, MongoDB and Firebase data layers.</p>
-        </li>
-        <li>
-          <h3>Desktop POS, online or offline</h3>
-          <p>Point-of-sale apps that keep working without a connection, used by retail and restaurant clients.</p>
-        </li>
-        <li>
-          <h3>One back end, many apps</h3>
-          <p>REST APIs that connect websites, admin panels, mobile apps and desktop apps to a shared back end.</p>
-        </li>
-        <li>
-          <h3>Tidy delivery</h3>
-          <p>Code managed with Git and GitHub, and APIs tested with Postman.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section" id="toolkit" aria-labelledby="toolkit-title">
-    <div class="wrap">
-      <header class="section-head">
-        <p class="eyebrow">Toolkit</p>
-        <h2 id="toolkit-title">What I build with</h2>
-      </header>
-      <div class="toolkit">
-        <div class="tool-group">
-          <h3>Front end</h3>
-          <ul class="chips"><li>React</li><li>React Native</li><li>JavaScript</li><li>TypeScript</li><li>Redux</li><li>Tailwind CSS</li></ul>
-        </div>
-        <div class="tool-group">
-          <h3>Back end</h3>
-          <ul class="chips"><li>Node.js</li><li>Express.js</li><li>PHP</li><li>REST APIs</li></ul>
-        </div>
-        <div class="tool-group">
-          <h3>Data</h3>
-          <ul class="chips"><li>MySQL</li><li>MongoDB</li><li>Firebase</li></ul>
-        </div>
-        <div class="tool-group">
-          <h3>Desktop &amp; workflow</h3>
-          <ul class="chips"><li>Electron</li><li>Git &amp; GitHub</li><li>Postman</li></ul>
-        </div>
-      </div>
-      <div class="platforms">
-        <p class="label-sm">Platforms shipped</p>
-        <ul>
-          <li><svg class="ic" aria-hidden="true"><use href="#ic-web"></use></svg><strong>Web</strong><span class="pbar" aria-hidden="true"><i style="--w: 80%"></i></span><span class="count">4 of 5 projects</span></li>
-          <li><svg class="ic" aria-hidden="true"><use href="#ic-desktop"></use></svg><strong>Desktop</strong><span class="pbar" aria-hidden="true"><i style="--w: 60%"></i></span><span class="count">3 of 5 projects</span></li>
-          <li><svg class="ic" aria-hidden="true"><use href="#ic-mobile"></use></svg><strong>Mobile</strong><span class="pbar" aria-hidden="true"><i style="--w: 40%"></i></span><span class="count">2 of 5 projects</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--alt" id="education" aria-labelledby="edu-title">
-    <div class="wrap split">
-      <header class="section-head">
-        <p class="eyebrow">Education</p>
-        <h2 id="edu-title">Where I studied</h2>
-        <p class="section-intro">A four-year software engineering degree, after a pre-medical intermediate where I scored 93.6%.</p>
-      </header>
-      <div>
-        <ol class="edu-list">
-          <li class="edu-item">
-            <span class="edu-when">2022 – 2026</span>
-            <div>
-              <h3>BS Software Engineering</h3>
-              <p>The Islamia University of Bahawalpur</p>
-            </div>
-            <p class="edu-score">3.54<small>CGPA</small></p>
-          </li>
-          <li class="edu-item">
-            <span class="edu-when">Higher secondary</span>
-            <div>
-              <h3>Intermediate (Pre-Medical)</h3>
-              <p>1030 / 1100 marks</p>
-            </div>
-            <p class="edu-score">93.6%<small>Score</small></p>
-          </li>
-        </ol>
-        <div class="langs">
+        <div class="langs" data-reveal>
           <p class="label-sm">Languages</p>
           <ul class="chips"><li>English</li><li>Urdu</li><li>Punjabi</li></ul>
         </div>
       </div>
     </div>
   </section>
-</main>
 
-<section class="contact" id="contact" aria-labelledby="contact-title">
-  <div class="wrap contact-grid">
-    <div class="contact-copy">
-      <p class="eyebrow eyebrow--band">Contact</p>
-      <h2 id="contact-title">Hiring a full-stack or React Native engineer?</h2>
-      <p class="contact-lede">I'm open to new roles. Send me an email or connect on LinkedIn, and I'll get back to you.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-accent site-only" href="mailto:shakifrabbani@gmail.com"><svg class="ic" aria-hidden="true"><use href="#ic-mail"></use></svg>Email me</a>
-        <a class="btn btn-ghost site-only" href="Shakif%20Rabbani%20Resume.pdf" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#ic-download"></use></svg>Download CV</a>
+  <!-- =================== WORK =================== -->
+  <section class="section" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="work-head">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal>Selected work</p>
+          <h2 id="work-title" data-reveal style="--d: 60ms">Systems I've shipped for real businesses</h2>
+          <p class="section-intro" data-reveal style="--d: 120ms">Five client products across web, mobile and desktop. Several combine a website, an admin panel, a desktop POS and mobile apps around one back end, connected through REST APIs I designed.</p>
+        </header>
+        <ul class="legend" aria-label="Diagram key" data-reveal style="--d: 160ms">
+          <li><svg class="ic" aria-hidden="true"><use href="#ic-web"></use></svg>Web</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#ic-desktop"></use></svg>Desktop</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#ic-mobile"></use></svg>Mobile</li>
+        </ul>
+      </div>
+
+      <div class="bento">
+        <article class="card project project--xl" data-reveal data-spotlight data-live>
+          <div class="project-head">
+            <p class="kicker">Restaurant · Ordering, POS and kitchen</p>
+            <span class="platform-icons" aria-hidden="true"><svg class="ic"><use href="#ic-web"></use></svg><svg class="ic"><use href="#ic-desktop"></use></svg><svg class="ic"><use href="#ic-mobile"></use></svg></span>
+          </div>
+          <div class="project-body">
+            <h3>Hot &amp; Spicy Restaurant System</h3>
+            <p class="project-desc">A full restaurant system with a website for menus and online ordering, an admin panel, a desktop POS, kitchen management and a mobile app.</p>
+          </div>
+          <div class="sysmap" role="img" aria-label="Five connected apps on one back end: ordering website, admin panel, desktop POS, kitchen management and mobile app">
+            <ul class="sysmap-nodes">
+              <li style="--n: 0"><svg class="ic"><use href="#ic-web"></use></svg>Ordering website</li>
+              <li style="--n: 1"><svg class="ic"><use href="#ic-web"></use></svg>Admin panel</li>
+              <li style="--n: 2"><svg class="ic"><use href="#ic-desktop"></use></svg>Desktop POS</li>
+              <li style="--n: 3"><svg class="ic"><use href="#ic-ticket"></use></svg>Kitchen management</li>
+              <li style="--n: 4"><svg class="ic"><use href="#ic-mobile"></use></svg>Mobile app</li>
+            </ul>
+            <p class="sysmap-base">One back end for every app</p>
+          </div>
+          <div class="project-meta"><span>Web · Desktop · Mobile</span><span>5 connected apps</span></div>
+        </article>
+
+        <article class="card project project--lg" data-reveal data-spotlight data-live style="--d: 100ms">
+          <div class="project-head">
+            <p class="kicker">Salon · Booking and POS</p>
+            <span class="platform-icons" aria-hidden="true"><svg class="ic"><use href="#ic-web"></use></svg><svg class="ic"><use href="#ic-desktop"></use></svg></span>
+          </div>
+          <div class="project-body">
+            <h3>Huma's Signature Salon</h3>
+            <p class="project-desc">A salon website where clients book appointments online, an admin panel for the team, and a desktop POS app for the counter.</p>
+          </div>
+          <div class="sysmap" role="img" aria-label="Three apps on one PHP and MySQL back end: booking website, admin panel and desktop POS">
+            <ul class="sysmap-nodes">
+              <li style="--n: 0"><svg class="ic"><use href="#ic-web"></use></svg>Booking website</li>
+              <li style="--n: 1"><svg class="ic"><use href="#ic-web"></use></svg>Admin panel</li>
+              <li style="--n: 2"><svg class="ic"><use href="#ic-desktop"></use></svg>Desktop POS</li>
+            </ul>
+            <p class="sysmap-base">One back end · PHP + MySQL</p>
+          </div>
+          <div class="project-meta">
+            <span>React · PHP · MySQL</span>
+            <a class="live-link" href="https://humassignaturesalon.com" target="_blank" rel="noopener"><span class="live-dot" aria-hidden="true"></span>Live site<svg class="ic" aria-hidden="true"><use href="#ic-external"></use></svg></a>
+          </div>
+        </article>
+
+        <article class="card project" data-reveal data-spotlight data-live>
+          <div class="project-head">
+            <p class="kicker">Retail · Point of sale</p>
+            <span class="platform-icons" aria-hidden="true"><svg class="ic"><use href="#ic-desktop"></use></svg></span>
+          </div>
+          <div class="project-body">
+            <h3>Retail POS System</h3>
+            <p class="project-desc">A point-of-sale system that runs online and offline, built for retail clients including Apex Mart, Dada Fabrics and Gems Traders.</p>
+          </div>
+          <div class="sysmap" role="img" aria-label="Deployed at three retail clients: Apex Mart, Dada Fabrics and Gems Traders">
+            <ul class="sysmap-nodes">
+              <li style="--n: 0"><svg class="ic"><use href="#ic-store"></use></svg>Apex Mart</li>
+              <li style="--n: 1"><svg class="ic"><use href="#ic-store"></use></svg>Dada Fabrics</li>
+              <li style="--n: 2"><svg class="ic"><use href="#ic-store"></use></svg>Gems Traders</li>
+            </ul>
+            <p class="sysmap-base">Desktop POS · online + offline</p>
+          </div>
+          <div class="project-meta"><span>React · PHP · MySQL</span><span>3 retail clients</span></div>
+        </article>
+
+        <article class="card project" data-reveal data-spotlight data-live style="--d: 100ms">
+          <div class="project-head">
+            <p class="kicker">Property · Four-role platform</p>
+            <span class="platform-icons" aria-hidden="true"><svg class="ic"><use href="#ic-web"></use></svg><svg class="ic"><use href="#ic-mobile"></use></svg></span>
+          </div>
+          <div class="project-body">
+            <h3>Property Inspection App</h3>
+            <p class="project-desc">Web panels for admins and managers, plus mobile apps for property inspectors and their clients.</p>
+          </div>
+          <div class="sysmap" role="img" aria-label="Four apps on Firebase: admin panel, manager panel, inspector app and client app">
+            <ul class="sysmap-nodes">
+              <li style="--n: 0"><svg class="ic"><use href="#ic-web"></use></svg>Admin panel</li>
+              <li style="--n: 1"><svg class="ic"><use href="#ic-web"></use></svg>Manager panel</li>
+              <li style="--n: 2"><svg class="ic"><use href="#ic-mobile"></use></svg>Inspector app</li>
+              <li style="--n: 3"><svg class="ic"><use href="#ic-mobile"></use></svg>Client app</li>
+            </ul>
+            <p class="sysmap-base">Firebase</p>
+          </div>
+          <div class="project-meta"><span>React Native · Firebase</span><span>4 user roles</span></div>
+        </article>
+
+        <article class="card project" data-reveal data-spotlight data-live style="--d: 200ms">
+          <div class="project-head">
+            <p class="kicker">Home services · Booking</p>
+            <span class="platform-icons" aria-hidden="true"><svg class="ic"><use href="#ic-web"></use></svg></span>
+          </div>
+          <div class="project-body">
+            <h3>Home Service Platform</h3>
+            <p class="project-desc">A website for a platform where customers book home services.</p>
+          </div>
+          <div class="sysmap" role="img" aria-label="Customer booking website on a Node.js back end">
+            <ul class="sysmap-nodes">
+              <li style="--n: 0"><svg class="ic"><use href="#ic-web"></use></svg>Customer booking website</li>
+            </ul>
+            <p class="sysmap-base">Node.js back end</p>
+          </div>
+          <div class="project-meta"><span>TypeScript · React · Node.js</span><span>Web platform</span></div>
+        </article>
       </div>
     </div>
-    <ul class="contact-list">
-      <li>
-        <span class="label">Email</span>
-        <span class="value" id="email-value">shakifrabbani@gmail.com</span>
-        <button class="copy-btn" id="copy-email" type="button">Copy</button>
-      </li>
-      <li>
-        <span class="label">Phone</span>
-        <a class="value" href="tel:+923014461010">+92 301 4461010</a>
-      </li>
-      <li>
-        <span class="label">LinkedIn</span>
-        <a class="value" href="https://www.linkedin.com/in/shakif-rabbani-902899264" target="_blank" rel="noopener">in/shakif-rabbani-902899264</a>
-      </li>
-      <li>
-        <span class="label">GitHub</span>
-        <a class="value" href="https://github.com/shakifrabbani" target="_blank" rel="noopener">github.com/shakifrabbani</a>
-      </li>
-      <li>
-        <span class="label">Based in</span>
-        <span class="value">Lahore, Pakistan</span>
-      </li>
-    </ul>
-    <p class="sr-only" id="copy-status" aria-live="polite"></p>
-  </div>
-</section>
+  </section>
+
+  <!-- =================== JOURNEY =================== -->
+  <section class="section" id="journey" aria-labelledby="journey-title">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow" data-reveal>Journey</p>
+        <h2 id="journey-title" data-reveal style="--d: 60ms">Experience and education</h2>
+      </header>
+
+      <div class="timeline">
+        <div class="timeline-rail" aria-hidden="true"><div class="timeline-fill"></div></div>
+        <ol class="tl-list">
+          <li class="tl-item" data-reveal>
+            <span class="tl-dot" aria-hidden="true"></span>
+            <article class="card tl-card" data-spotlight>
+              <p class="tl-when">04/2026 – Present <span class="now-chip"><span class="live-dot" aria-hidden="true"></span>Current</span></p>
+              <div class="tl-row">
+                <div>
+                  <h3>Software Engineer · Robonex</h3>
+                  <p class="tl-where">DHA Rahbar, Lahore · On-site</p>
+                </div>
+              </div>
+              <p class="tl-summary">Delivered five client products across web, mobile and desktop in six months, some built independently and others as part of a team.</p>
+              <ul class="tl-points">
+                <li><strong>End-to-end features</strong>React and React Native interfaces, Node.js, Express.js and PHP back ends, and MySQL, MongoDB and Firebase data layers.</li>
+                <li><strong>Desktop POS, online or offline</strong>Point-of-sale apps that keep working without a connection, used by retail and restaurant clients.</li>
+                <li><strong>One back end, many apps</strong>REST APIs connecting websites, admin panels, mobile apps and desktop apps to a shared back end.</li>
+                <li><strong>Tidy delivery</strong>Code managed with Git and GitHub, and APIs tested with Postman.</li>
+              </ul>
+            </article>
+          </li>
+          <li class="tl-item" data-reveal>
+            <span class="tl-dot" aria-hidden="true"></span>
+            <article class="card tl-card" data-spotlight>
+              <p class="tl-when">2022 – 2026</p>
+              <div class="tl-row">
+                <div>
+                  <h3>BS Software Engineering</h3>
+                  <p class="tl-where">The Islamia University of Bahawalpur</p>
+                </div>
+                <p class="score"><b class="gradient-text">3.54</b><small>CGPA</small></p>
+              </div>
+            </article>
+          </li>
+          <li class="tl-item" data-reveal>
+            <span class="tl-dot" aria-hidden="true"></span>
+            <article class="card tl-card" data-spotlight>
+              <p class="tl-when">Higher secondary</p>
+              <div class="tl-row">
+                <div>
+                  <h3>Intermediate (Pre-Medical)</h3>
+                  <p class="tl-where">1030 / 1100 marks</p>
+                </div>
+                <p class="score"><b class="gradient-text">93.6%</b><small>Score</small></p>
+              </div>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== TOOLKIT =================== -->
+  <section class="section" id="toolkit" aria-labelledby="toolkit-title">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow" data-reveal>Toolkit</p>
+        <h2 id="toolkit-title" data-reveal style="--d: 60ms">What I build with</h2>
+      </header>
+
+      <div class="tool-grid">
+        <div class="card tool" data-reveal data-spotlight>
+          <div class="tool-head"><span class="tool-icon"><svg class="ic" aria-hidden="true"><use href="#ic-layout"></use></svg></span><h3>Front end</h3></div>
+          <ul class="chips"><li>React</li><li>React Native</li><li>JavaScript</li><li>TypeScript</li><li>Redux</li><li>Tailwind CSS</li></ul>
+        </div>
+        <div class="card tool" data-reveal data-spotlight style="--d: 80ms">
+          <div class="tool-head"><span class="tool-icon"><svg class="ic" aria-hidden="true"><use href="#ic-server"></use></svg></span><h3>Back end</h3></div>
+          <ul class="chips"><li>Node.js</li><li>Express.js</li><li>PHP</li><li>REST APIs</li></ul>
+        </div>
+        <div class="card tool" data-reveal data-spotlight style="--d: 160ms">
+          <div class="tool-head"><span class="tool-icon"><svg class="ic" aria-hidden="true"><use href="#ic-db"></use></svg></span><h3>Data</h3></div>
+          <ul class="chips"><li>MySQL</li><li>MongoDB</li><li>Firebase</li></ul>
+        </div>
+        <div class="card tool" data-reveal data-spotlight style="--d: 240ms">
+          <div class="tool-head"><span class="tool-icon"><svg class="ic" aria-hidden="true"><use href="#ic-git"></use></svg></span><h3>Desktop &amp; workflow</h3></div>
+          <ul class="chips"><li>Electron</li><li>Git &amp; GitHub</li><li>Postman</li></ul>
+        </div>
+      </div>
+
+      <div class="card platform-panel" data-reveal data-inview>
+        <p class="label-sm">Platforms shipped</p>
+        <ul class="platform-bars">
+          <li>
+            <div class="pb-top"><span class="pb-name"><svg class="ic" aria-hidden="true"><use href="#ic-web"></use></svg>Web</span><span class="pb-count">4 of 5 projects</span></div>
+            <span class="pbar" aria-hidden="true"><i style="--w: 80%; --d: 100ms"></i></span>
+          </li>
+          <li>
+            <div class="pb-top"><span class="pb-name"><svg class="ic" aria-hidden="true"><use href="#ic-desktop"></use></svg>Desktop</span><span class="pb-count">3 of 5 projects</span></div>
+            <span class="pbar" aria-hidden="true"><i style="--w: 60%; --d: 250ms"></i></span>
+          </li>
+          <li>
+            <div class="pb-top"><span class="pb-name"><svg class="ic" aria-hidden="true"><use href="#ic-mobile"></use></svg>Mobile</span><span class="pb-count">2 of 5 projects</span></div>
+            <span class="pbar" aria-hidden="true"><i style="--w: 40%; --d: 400ms"></i></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== CONTACT =================== -->
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="contact-bg" aria-hidden="true">
+      <div class="grid-lines"></div>
+      <span class="blob blob-1"></span>
+      <span class="blob blob-3"></span>
+    </div>
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <p class="eyebrow" data-reveal>Contact</p>
+        <h2 id="contact-title" data-reveal style="--d: 60ms">Hiring a full-stack or React Native engineer? <span class="gradient-text">Let's talk.</span></h2>
+        <p class="contact-lede" data-reveal style="--d: 120ms">I'm open to new roles. Send me an email or connect on LinkedIn, and I'll get back to you.</p>
+        <div class="email-row" data-reveal style="--d: 160ms">
+          <a class="email-big" id="email-text" href="mailto:shakifrabbani@gmail.com">shakifrabbani@gmail.com</a>
+          <button class="copy-btn" type="button" data-copy="shakifrabbani@gmail.com" data-copy-target="email-text">
+            <svg class="ic" aria-hidden="true"><use href="#ic-copy"></use></svg><span class="idle">Copy</span><span class="done">Copied</span>
+          </button>
+        </div>
+        <div class="hero-ctas" data-reveal style="--d: 200ms">
+          <a class="btn btn-primary site-only" href="mailto:shakifrabbani@gmail.com" data-magnetic><svg class="ic" aria-hidden="true"><use href="#ic-mail"></use></svg>Email me</a>
+          <a class="btn btn-ghost site-only" href="Shakif%20Rabbani%20Resume.pdf" target="_blank" rel="noopener" data-magnetic><svg class="ic" aria-hidden="true"><use href="#ic-download"></use></svg>Download CV</a>
+        </div>
+      </div>
+
+      <div class="card contact-card" data-reveal data-spotlight style="--d: 120ms">
+        <ul class="contact-list">
+          <li>
+            <span class="c-icon"><svg class="ic" aria-hidden="true"><use href="#ic-phone"></use></svg></span>
+            <span class="c-text"><span class="label">Phone</span><a class="value" href="tel:+923014461010">+92 301 4461010</a></span>
+          </li>
+          <li>
+            <span class="c-icon"><svg class="ic" aria-hidden="true"><use href="#ic-linkedin"></use></svg></span>
+            <span class="c-text"><span class="label">LinkedIn</span><a class="value" href="https://www.linkedin.com/in/shakif-rabbani-902899264" target="_blank" rel="noopener">in/shakif-rabbani-902899264</a></span>
+          </li>
+          <li>
+            <span class="c-icon"><svg class="ic" aria-hidden="true"><use href="#ic-github"></use></svg></span>
+            <span class="c-text"><span class="label">GitHub</span><a class="value" href="https://github.com/shakifrabbani" target="_blank" rel="noopener">github.com/shakifrabbani</a></span>
+          </li>
+          <li>
+            <span class="c-icon"><svg class="ic" aria-hidden="true"><use href="#ic-pin"></use></svg></span>
+            <span class="c-text"><span class="label">Based in</span><span class="value">Lahore, Pakistan</span></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer class="site-footer">
-  <div class="wrap">
+  <div class="wrap footer-inner">
     <span>© <span id="year">2026</span> M. Shakif Rabbani</span>
-    <span>Hand-built with HTML, CSS and JavaScript</span>
+    <span>Designed and built from scratch with HTML, CSS and JavaScript</span>
   </div>
 </footer>
 
-<script>
-  (function () {
-    var root = document.documentElement;
-    var btn = document.getElementById("theme-toggle");
-    var mq = window.matchMedia("(prefers-color-scheme: dark)");
-
-    function isDark() {
-      var t = root.getAttribute("data-theme");
-      return t ? t === "dark" : mq.matches;
-    }
-    function sync() {
-      var dark = isDark();
-      btn.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
-      btn.querySelector("use").setAttribute("href", dark ? "#ic-sun" : "#ic-moon");
-    }
-    btn.addEventListener("click", function () {
-      var next = isDark() ? "light" : "dark";
-      root.setAttribute("data-theme", next);
-      try { localStorage.setItem("theme", next); } catch (e) {}
-      sync();
-    });
-    if (mq.addEventListener) mq.addEventListener("change", sync);
-    sync();
-
-    var copyBtn = document.getElementById("copy-email");
-    var emailEl = document.getElementById("email-value");
-    var status = document.getElementById("copy-status");
-    var timer;
-    function show(label, message) {
-      copyBtn.textContent = label;
-      status.textContent = message;
-      clearTimeout(timer);
-      timer = setTimeout(function () { copyBtn.textContent = "Copy"; status.textContent = ""; }, 2000);
-    }
-    function selectEmail() {
-      var range = document.createRange();
-      range.selectNodeContents(emailEl);
-      var sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(range);
-      show("Selected", "Email address selected. Press Ctrl+C to copy it.");
-    }
-    copyBtn.addEventListener("click", function () {
-      var text = emailEl.textContent.trim();
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(function () { show("Copied", "Email address copied."); }, selectEmail);
-      } else {
-        selectEmail();
-      }
-    });
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-  })();
-</script>
+<a class="to-top" href="#top" aria-label="Back to top"><svg class="ic" aria-hidden="true"><use href="#ic-arrow-up"></use></svg></a>
+<div class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
