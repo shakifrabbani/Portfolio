@@ -63,7 +63,7 @@ export function Navbar() {
             : "border-line bg-white/[0.015] backdrop-blur-[2px]",
         )}
       >
-        <Logo onNavigate={close} />
+        <Logo variant="wordmark" onNavigate={close} />
 
         <ul className="relative hidden items-center gap-0.5 md:flex">
           {navigation.map((item) => {
@@ -98,7 +98,7 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <Button href={hrefFor("contact")} size="sm" className="hidden sm:inline-flex">
+          <Button href={hrefFor("contact")} size="sm" className="max-[379px]:hidden">
             Let&apos;s Talk <ButtonArrow />
           </Button>
           <button

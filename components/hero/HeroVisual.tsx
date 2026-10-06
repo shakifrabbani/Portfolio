@@ -45,7 +45,7 @@ export function HeroVisual() {
   }, [reduce, mx, my]);
 
   return (
-    <div ref={ref} className="relative mx-auto aspect-square w-full max-w-[520px] lg:max-w-[600px]">
+    <div ref={ref} className="relative mx-auto aspect-square w-full max-w-[520px] lg:max-w-[min(600px,calc(100svh_-_150px))]">
       <m.div style={{ y: drift }} className="absolute inset-0">
         {/* Back layer: deep glow, faint grid and the neon ring */}
         <m.div style={back} className="absolute inset-0" aria-hidden="true">

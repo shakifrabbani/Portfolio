@@ -19,9 +19,18 @@ const particles = [
   { left: "35%", top: "48%", size: 2, d: "-9s" },
 ];
 
+/**
+ * Full-screen hero. Type, spacing and the portrait scale with the viewport *height* as well as its width
+ * (clamp + min(vw, vh)), so everything down to the call-to-action fits on the first screen,
+ * from a 1280×600 laptop browser to a 1920×1080 monitor.
+ */
 export function Hero() {
   return (
-    <section id="home" aria-labelledby="hero-title" className="relative overflow-hidden pb-6 pt-28 sm:pt-32 lg:pt-36">
+    <section
+      id="home"
+      aria-labelledby="hero-title"
+      className="relative flex flex-col justify-center overflow-hidden pb-8 pt-24 sm:pt-28 lg:min-h-[100svh] lg:pb-10 lg:pt-[88px]"
+    >
       {/* Hero-only atmosphere: soft glow and a few slow particles (fewer on small screens). */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="absolute right-[-10%] top-[-20%] h-[640px] w-[640px] rounded-full bg-[radial-gradient(closest-side,rgb(108_99_255/0.18),transparent)]" />
@@ -34,7 +43,7 @@ export function Hero() {
         ))}
       </div>
 
-      <div className="container-site relative grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-6">
+      <div className="container-site relative grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-8">
         <div>
           <p style={delay(0)} className="intro inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-fg-2">
             <span className="relative grid size-2 place-items-center">
@@ -46,56 +55,60 @@ export function Hero() {
 
           <h1
             id="hero-title"
-            className="mt-6 font-display text-[2.6rem] font-extrabold leading-[1.04] tracking-[-0.035em] text-fg sm:text-6xl lg:text-[3.6rem] xl:text-[4.35rem]"
+            className="mt-[clamp(0.9rem,2.4vh,1.4rem)] font-display text-[length:clamp(2.25rem,min(4.4vw,7vh),3.75rem)] font-extrabold leading-[1.04] tracking-[-0.035em] text-fg"
           >
             <span className="block overflow-hidden pb-[0.06em]">
               <span style={delay(80)} className="intro-line">
                 Hi, I&apos;m
               </span>
             </span>{" "}
-            <span className="block overflow-hidden pb-[0.06em]">
+            <span className="block overflow-hidden pb-[0.08em]">
               <span style={delay(170)} className="intro-line text-gradient">
                 {profile.displayName}.
-              </span>
-            </span>{" "}
-            <span className="block overflow-hidden pb-[0.06em]">
-              <span style={delay(260)} className="intro-line">
-                I build scalable
-              </span>
-            </span>{" "}
-            <span className="block overflow-hidden pb-[0.1em]">
-              <span style={delay(350)} className="intro-line">
-                digital products.
               </span>
             </span>
           </h1>
 
-          <p style={delay(480)} className="intro mt-6 max-w-xl text-base leading-relaxed text-fg-2 sm:text-[17px]">
+          <p
+            style={delay(270)}
+            className="intro mt-[clamp(0.4rem,1.4vh,0.8rem)] font-display text-[length:clamp(1.1rem,min(1.85vw,3vh),1.5rem)] font-semibold leading-snug tracking-[-0.02em] text-fg"
+          >
+            I build scalable digital products.
+          </p>
+
+          <p
+            style={delay(380)}
+            className="intro mt-[clamp(0.7rem,1.9vh,1.15rem)] max-w-[34rem] text-[length:clamp(0.9rem,min(1.15vw,1.9vh),1.0625rem)] leading-relaxed text-fg-2"
+          >
             Software Engineer &amp; Full-Stack Developer building modern web applications, business systems and mobile experiences with
             React, Next.js, Node.js, PHP and React Native.
           </p>
 
-          <div style={delay(600)} className="intro mt-8 flex flex-wrap gap-3">
-            <Button href="#projects" size="lg">
+          <div style={delay(490)} className="intro mt-[clamp(1.1rem,3vh,1.9rem)] flex flex-wrap gap-3">
+            <Button href="#projects">
               View My Work <ButtonArrow />
             </Button>
-            <Button href={withBasePath(profile.resumePath)} variant="secondary" size="lg" download>
+            <Button href={withBasePath(profile.resumePath)} variant="secondary" download>
               <Download className="size-4" aria-hidden="true" /> Download Resume
             </Button>
-            <Button href={profile.socials.github} variant="secondary" size="lg" external>
+            <Button href={profile.socials.github} variant="secondary" external>
               <GitHubIcon className="size-4" /> GitHub
             </Button>
           </div>
 
-          <ul style={delay(720)} className="intro mt-10 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4 sm:gap-x-4" aria-label="Highlights">
+          <ul
+            style={delay(600)}
+            className="intro mt-[clamp(1.1rem,3.4vh,2.1rem)] grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4 sm:gap-x-4"
+            aria-label="Highlights"
+          >
             {heroStats.map((stat) => (
-              <li key={stat.label} className="flex items-start gap-3">
+              <li key={stat.label} className="flex items-start gap-2.5">
                 <span className="mt-0.5 text-accent-ink">
-                  <Icon name={stat.icon} className="size-5" />
+                  <Icon name={stat.icon} className="size-[18px]" />
                 </span>
                 <span>
-                  <span className="block text-[15px] font-semibold leading-tight text-fg">{stat.value}</span>
-                  <span className="mt-0.5 block text-xs text-fg-3">{stat.label}</span>
+                  <span className="block text-sm font-semibold leading-tight text-fg">{stat.value}</span>
+                  <span className="mt-0.5 block text-[11.5px] leading-snug text-fg-3">{stat.label}</span>
                 </span>
               </li>
             ))}
@@ -104,6 +117,19 @@ export function Hero() {
 
         <HeroVisual />
       </div>
+
+      {/* Scroll hint, only where there is room below the content. */}
+      <a
+        href="#about"
+        aria-label="Scroll to the about section"
+        style={delay(900)}
+        className="intro absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[10px] font-medium uppercase tracking-[0.22em] text-fg-3 transition-colors hover:text-fg lg:flex [@media(max-height:820px)]:hidden"
+      >
+        <span className="relative h-8 w-5 rounded-full border-2 border-white/20">
+          <span className="animate-scroll-dot absolute left-1/2 top-1.5 h-1.5 w-1 -translate-x-1/2 rounded-full bg-accent-soft" />
+        </span>
+        Scroll
+      </a>
     </section>
   );
 }
