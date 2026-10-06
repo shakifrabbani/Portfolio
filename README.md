@@ -1,50 +1,62 @@
 # M. Shakif Rabbani · Portfolio
 
-Personal portfolio of **M. Shakif Rabbani**, a full-stack software engineer in Lahore, Pakistan.
+Personal portfolio of **M. Shakif Rabbani**, Software Engineer and Full-Stack Developer in Lahore, Pakistan.
 
-Live site: https://shakifrabbani.github.io/Portfolio/ (once GitHub Pages is enabled, see below)
+Live site: https://shakifrabbani.github.io/Portfolio/ (after GitHub Pages is set up, see [Deployment](#deployment))
 
-## Highlights
+## Stack
 
-- **Animated hero:** a live point-of-sale demo rings up an order, loses the connection, takes payment offline, prints a kitchen ticket and syncs. It mirrors the online and offline POS systems in the projects.
-- **Motion with purpose:** word rotator, tech marquee, scroll reveals, count-up stats, animated system diagrams, a scroll-drawn timeline, a cursor spotlight on cards, magnetic buttons and a circular theme switch.
-- **Light and dark themes:** follows the visitor's OS setting, with a toggle that remembers the choice.
-- **Recruiter-ready metadata:** Open Graph card, schema.org `Person` data, favicon and touch icon.
+Next.js 16 (App Router, static export) · React 19 · TypeScript · Tailwind CSS 4 · Framer Motion · Lucide · Simple Icons
 
-## Engineering notes
+## What's inside
 
-- **No build step, no dependencies.** Plain HTML, CSS and JavaScript, so GitHub Pages serves it as is.
-- **Progressive enhancement.** Nothing starts hidden in the HTML or CSS. Without JavaScript the page is complete and readable.
-- **Reduced motion respected.** With `prefers-reduced-motion`, every animation and the POS loop are switched off.
-- **Performance.** Animations use `transform` and `opacity` only. Looping animations pause when off-screen or when the tab is hidden. Scroll work is batched with `requestAnimationFrame`.
-- **Accessibility.** Semantic landmarks, skip link, visible focus, labelled controls, an accessible mobile menu with Escape support, and text alternatives for decorative demos.
-- **Fault isolation.** Each feature in `js/main.js` initialises inside its own `try/catch`, so one failure never breaks the rest.
+- **Home page sections:** hero, recruiter overview, about, skills, experience timeline, selected work, case study, development process, engineering strengths, GitHub activity and contact.
+- **Project pages:** `/projects/` lists every project and each one gets a statically generated case-study page at `/projects/<slug>/`.
+- **Motion:** CSS hero intro that paints before hydration, scroll reveals, count-up numbers, mouse and scroll parallax, a scroll-linked timeline, animated architecture maps, cursor spotlight on cards, a desktop custom cursor, a sliding nav indicator and an animated mobile menu.
+- **Live GitHub data:** repository count, highlighted repos and language breakdown are fetched at build time, with a snapshot fallback so builds never fail offline.
+- **SEO:** page metadata, Open Graph card, JSON-LD `Person` data and a sitemap.
+- **Accessibility:** semantic landmarks, skip link, visible focus, labelled controls, keyboard-friendly menu and full `prefers-reduced-motion` support.
 
-## Project structure
+## Getting started
 
-| Path | Purpose |
+```bash
+npm install
+npm run dev          # http://localhost:3000
+npm run build        # static site in out/
+npm run preview      # serve out/ locally
+npm run lint && npm run typecheck
+```
+
+## Editing content
+
+All copy lives in typed data files, so content changes never touch components.
+
+| File | Controls |
 | --- | --- |
-| `index.html` | Page content and structure. |
-| `css/style.css` | Design tokens, themes, layout, components and animations. |
-| `js/main.js` | Interactions and animation logic. |
-| `assets/` | Profile photo, favicon, touch icon and social preview card. |
-| `Shakif Rabbani Resume.pdf` | The CV behind the "Download CV" buttons. |
-| `.nojekyll` | Tells GitHub Pages to serve files as is. |
+| `data/profile.ts` | Name, title, email, social links, resume path, hero stats and SEO text |
+| `data/content.ts` | Navigation, overview cards, principles, skills, experience and education, process steps, strengths |
+| `data/projects.ts` | Project cards and case-study pages |
+| `data/tech.ts` | Technology names and logos |
+| `lib/github.ts` | Which public repositories are highlighted |
+| `public/Shakif-Rabbani-Resume.pdf` | The resume behind every "Download Resume" button |
+| `assets/images/portrait.webp` | Hero portrait with a transparent background |
 
-## Run it locally
+Keep every number verifiable. Recruiters check.
 
-Open `index.html` in a browser. Nothing to install.
+**Adding real screenshots:** put an image in `public/projects/` and set `screenshot: "/projects/your-image.webp"` on the project in `data/projects.ts`. A 16:10 image works best. It replaces the coded preview on the card, the projects list and the case-study page.
 
-## Publish with GitHub Pages
+## Deployment
 
-1. Push this repo to GitHub.
-2. On GitHub, open **Settings → Pages**.
-3. Under **Build and deployment**, set **Source** to *Deploy from a branch*, pick `main` and `/ (root)`, then save.
-4. After a minute the site is live at `https://shakifrabbani.github.io/Portfolio/`.
+The included workflow (`.github/workflows/deploy.yml`) lints, type-checks, builds and deploys to GitHub Pages on every push to `main`.
 
-## Updating content
+1. Make the repository public. GitHub Pages on a free account only works with public repositories (GitHub Pro lifts this).
+2. On GitHub, open **Settings → Pages** and set **Source** to **GitHub Actions**.
+3. Push to `main`. The first run takes about two minutes.
+4. The site goes live at `https://shakifrabbani.github.io/Portfolio/`.
 
-- **New project:** copy an `<article class="card project">` block in the `#work` section. Use `project--xl` or `project--lg` for a wider card.
-- **New CV:** replace the PDF and keep the same file name, or update the `href` on both "Download CV" buttons.
-- **Availability:** "Open to new roles" appears in the hero badge and the contact section.
-- **Colours and fonts:** edit the tokens at the top of `css/style.css`.
+Using a custom domain or a repository named `shakifrabbani.github.io`? Set `NEXT_PUBLIC_BASE_PATH` to an empty string in the workflow and update `NEXT_PUBLIC_SITE_URL`.
+
+## Notes
+
+- `scripts/fix-export-segments.mjs` works around a Next.js 16 static-export bug on Windows, where prefetch files land in nested folders. It is a no-op on Linux and macOS, including the deploy workflow.
+- Animations respect `prefers-reduced-motion`, and the custom cursor only runs on mouse and trackpad devices.
