@@ -5,6 +5,7 @@ import { CodeXml } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, type ReactNode } from "react";
 import portrait from "@/assets/images/portrait.webp";
+import { FigmaLogo } from "@/components/ui/BrandIcons";
 import { TechIcon } from "@/components/ui/TechIcon";
 import { cn, delay } from "@/lib/utils";
 
@@ -12,7 +13,12 @@ function useDepth(x: MotionValue<number>, y: MotionValue<number>, depth: number)
   return { x: useTransform(x, (v) => v * depth), y: useTransform(y, (v) => v * depth) };
 }
 
-/** Portrait composition with mouse parallax (four depth layers) and a gentle scroll parallax. */
+/**
+ * Hero composition from the design: cut-out portrait in front of a glowing neon ring,
+ * floating technology tiles, a status widget and a code card over the shoulder.
+ * Everything except the photo is live markup, so it stays crisp, animates and adapts to every screen.
+ * Mouse parallax runs on four depth layers; the whole group drifts gently on scroll.
+ */
 export function HeroVisual() {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
@@ -39,51 +45,50 @@ export function HeroVisual() {
   }, [reduce, mx, my]);
 
   return (
-    <div ref={ref} className="relative mx-auto aspect-square w-full max-w-[520px] lg:max-w-[560px]">
+    <div ref={ref} className="relative mx-auto aspect-square w-full max-w-[520px] lg:max-w-[600px]">
       <m.div style={{ y: drift }} className="absolute inset-0">
-        {/* Back layer: glow, orbit rings and a masked grid */}
+        {/* Back layer: deep glow, faint grid and the neon ring */}
         <m.div style={back} className="absolute inset-0" aria-hidden="true">
           <div className="intro-fade absolute inset-0">
-          <div className="absolute left-1/2 top-[46%] size-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgb(108_99_255/0.5),rgb(79_140_255/0.16)_45%,transparent_70%)] blur-2xl" />
-          <div className="absolute left-1/2 top-[46%] size-[66%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.07]" />
-          <div className="animate-spin-slow absolute left-1/2 top-[46%] size-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-white/[0.06]" />
-          <div className="bg-grid absolute inset-[6%] rounded-full opacity-80 [mask-image:radial-gradient(circle,#000_25%,transparent_68%)]" />
+            <div className="absolute left-1/2 top-[46%] aspect-square h-[96%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgb(76_70_229/0.42),rgb(59_130_246/0.14)_42%,transparent_68%)]" />
+            <div className="bg-grid absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_at_center,#000_22%,transparent_68%)]" />
+            <NeonRing />
           </div>
         </m.div>
 
         {/* Portrait */}
-        <m.div style={person} className="absolute inset-x-[9%] bottom-0 top-[3%]">
+        <m.div style={person} className="absolute inset-x-[8%] bottom-0 top-[1%]">
           <div style={delay(150)} className="intro-fade h-full w-full">
             <Image
               src={portrait}
               alt="Portrait of M. Shakif Rabbani"
               priority
-              sizes="(min-width: 1024px) 470px, 80vw"
-              className="portrait-fade h-full w-full object-contain object-bottom drop-shadow-[0_0_44px_rgb(108_99_255/0.35)]"
+              sizes="(min-width: 1024px) 500px, 80vw"
+              className="portrait-fade h-full w-full object-contain object-bottom drop-shadow-[0_0_38px_rgb(124_58_237/0.4)]"
             />
           </div>
         </m.div>
 
-        {/* Floating technology tiles */}
+        {/* Floating technology tiles, positioned as in the design */}
         <m.div style={tiles} className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <FloatTile className="left-[7%] top-[13%]" d={500} float="animate-float">
-            <TechIcon name="react" className="size-7" />
+          <FloatTile className="left-[5%] top-[8%]" d={500} float="animate-float">
+            <TechIcon name="react" className="size-6 sm:size-8 xl:size-9" />
           </FloatTile>
-          <FloatTile className="left-[0%] top-[37%] hidden sm:grid" d={650} float="animate-float-slow">
-            <TechIcon name="javascript" className="size-6" />
+          <FloatTile className="left-[-1%] top-[35%]" d={650} float="animate-float-slow">
+            <TechIcon name="nodejs" className="size-6 sm:size-8 xl:size-9" />
           </FloatTile>
-          <FloatTile className="left-[9%] top-[60%]" d={800} float="animate-float">
-            <TechIcon name="typescript" className="size-6" />
+          <FloatTile className="left-[5%] top-[62%]" d={800} float="animate-float">
+            <TechIcon name="typescript" className="size-5 sm:size-7 xl:size-8" />
           </FloatTile>
-          <FloatTile className="right-[45%] top-[1%] hidden sm:grid" d={700} float="animate-float-slow">
-            <TechIcon name="nodejs" className="size-7" />
+          <FloatTile className="right-[19%] top-[4%] xl:right-[22%]" d={700} float="animate-float-slow">
+            <FigmaLogo className="h-6 w-auto sm:h-8 xl:h-9" />
           </FloatTile>
-          <FloatTile className="right-[5%] top-[38%]" d={900} float="animate-float">
-            <CodeXml className="size-6 text-accent-ink" strokeWidth={2} />
+          <FloatTile className="right-[3%] top-[33%]" d={900} float="animate-float">
+            <CodeXml className="size-6 text-accent-ink sm:size-7 xl:size-8" strokeWidth={2} />
           </FloatTile>
         </m.div>
 
-        {/* Widgets */}
+        {/* Status widget and code card */}
         <m.div style={cards} className="pointer-events-none absolute inset-0">
           <BuildingWidget />
           <CodeCard />
@@ -93,12 +98,47 @@ export function HeroVisual() {
   );
 }
 
+/** Gradient neon ring. The halo layer pulses on its own compositor layer, and the ring slowly rotates its light. */
+function NeonRing() {
+  return (
+    <div className="absolute left-1/2 top-[45%] aspect-square h-[80%] -translate-x-1/2 -translate-y-1/2">
+      <div className="animate-spin-slow absolute inset-0">
+        <svg viewBox="0 0 200 200" className="animate-ring-glow absolute inset-0 h-full w-full overflow-visible">
+          <defs>
+            <linearGradient id="hero-ring-halo" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#a78bfa" />
+              <stop offset="0.5" stopColor="#6d28d9" />
+              <stop offset="1" stopColor="#2563eb" />
+            </linearGradient>
+            <filter id="hero-ring-blur" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="6" />
+            </filter>
+          </defs>
+          <circle cx="100" cy="100" r="88" fill="none" stroke="url(#hero-ring-halo)" strokeWidth="14" filter="url(#hero-ring-blur)" />
+        </svg>
+        <svg viewBox="0 0 200 200" className="absolute inset-0 h-full w-full overflow-visible">
+          <defs>
+            <linearGradient id="hero-ring-core" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#c4b5fd" />
+              <stop offset="0.35" stopColor="#7c3aed" />
+              <stop offset="0.7" stopColor="#4f46e5" />
+              <stop offset="1" stopColor="#3b82f6" />
+            </linearGradient>
+          </defs>
+          <circle cx="100" cy="100" r="88" fill="none" stroke="url(#hero-ring-core)" strokeWidth="6" />
+          <circle cx="100" cy="100" r="88" fill="none" stroke="#ede9fe" strokeOpacity="0.55" strokeWidth="1.2" />
+        </svg>
+      </div>
+    </div>
+  );
+}
+
 function FloatTile({ children, className, d, float }: { children: ReactNode; className?: string; d: number; float: string }) {
   return (
     <div style={delay(d)} className={cn("intro-fade absolute grid", className)}>
       <div
         className={cn(
-          "grid size-12 place-items-center rounded-2xl border border-white/10 bg-surface/70 shadow-[0_18px_40px_-18px_rgb(0_0_0/0.9),inset_0_1px_0_rgb(255_255_255/0.08)] backdrop-blur-md sm:size-14",
+          "grid size-12 place-items-center rounded-2xl border border-violet-400/30 bg-[#0b1024]/80 shadow-[0_0_30px_-6px_rgb(124_58_237/0.7),inset_0_1px_0_rgb(255_255_255/0.08)] backdrop-blur-md sm:size-16 lg:size-[60px] xl:size-[72px]",
           float,
         )}
         style={{ animationDelay: `${-d * 3}ms` }}
@@ -118,15 +158,15 @@ const solutions = [
 
 function BuildingWidget() {
   return (
-    <div style={delay(1000)} className="intro absolute right-[-3%] top-[1%] hidden w-[42%] min-w-[168px] max-w-[200px] sm:block" aria-hidden="true">
-      <div className="rounded-2xl border border-white/10 bg-surface/75 p-3.5 shadow-[0_24px_50px_-24px_rgb(0_0_0/0.95)] backdrop-blur-md">
-        <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-fg-3">Building</p>
-        <p className="mt-0.5 text-[13px] font-semibold text-fg">Modern Solutions</p>
-        <ul className="mt-3 space-y-2">
+    <div style={delay(1000)} className="intro absolute right-[-12%] top-[1%] hidden w-[31%] min-w-[150px] max-w-[178px] xl:block" aria-hidden="true">
+      <div className="rounded-2xl border border-white/10 bg-surface/75 p-3 shadow-[0_24px_50px_-24px_rgb(0_0_0/0.95)] backdrop-blur-md">
+        <p className="text-[9.5px] font-medium uppercase tracking-[0.14em] text-fg-3">Building</p>
+        <p className="mt-0.5 text-[12px] font-semibold text-fg">Modern Solutions</p>
+        <ul className="mt-2.5 space-y-1.5">
           {solutions.map((item, i) => (
-            <li key={item.label} className="flex items-center gap-2 text-[11.5px] text-fg-2">
+            <li key={item.label} className="flex items-center gap-2 text-[11px] text-fg-2">
               <span className="relative grid size-2 place-items-center">
-                <span className={cn("absolute inset-0 rounded-full animate-ping-soft", item.tone)} style={{ animationDelay: `${i * 450}ms` }} />
+                <span className={cn("animate-ping-soft absolute inset-0 rounded-full", item.tone)} style={{ animationDelay: `${i * 450}ms` }} />
                 <span className={cn("relative size-2 rounded-full", item.tone)} />
               </span>
               {item.label}
@@ -140,8 +180,12 @@ function BuildingWidget() {
 
 function CodeCard() {
   return (
-    <div style={delay(1150)} className="intro absolute bottom-[-2%] right-[-2%] w-[62%] max-w-[300px] sm:bottom-[9%] sm:right-[-4%] sm:w-[58%] sm:min-w-[220px]" aria-hidden="true">
-      <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0b0f17]/90 shadow-[0_30px_60px_-28px_rgb(0_0_0/1)] backdrop-blur-md">
+    <div
+      style={delay(1150)}
+      className="intro absolute bottom-[-2%] right-[-2%] w-[62%] max-w-[300px] sm:bottom-[6%] sm:right-[-4%] sm:w-[56%] sm:min-w-[220px] lg:bottom-[8%] lg:right-[-6%] lg:w-[50%] xl:right-[-10%]"
+      aria-hidden="true"
+    >
+      <div className="overflow-hidden rounded-2xl border border-violet-400/25 bg-[#0b0f1d]/90 shadow-[0_30px_60px_-28px_rgb(0_0_0/1),0_0_32px_-12px_rgb(124_58_237/0.6)] backdrop-blur-md">
         <div className="flex items-center gap-1.5 border-b border-white/[0.06] px-3.5 py-2.5">
           <span className="size-2.5 rounded-full bg-[#ff5f57]" />
           <span className="size-2.5 rounded-full bg-[#febc2e]" />

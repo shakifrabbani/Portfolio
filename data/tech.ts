@@ -5,6 +5,7 @@ import {
   siCss,
   siElectron,
   siExpress,
+  siFigma,
   siFirebase,
   siGit,
   siGithub,
@@ -57,6 +58,7 @@ export const tech = {
   postman: { label: "Postman", kind: "brand", icon: siPostman },
   vite: { label: "Vite", kind: "brand", icon: siVite },
   vscode: { label: "VS Code", kind: "lucide", icon: SquareCode, color: "#3B9BF5" },
+  figma: { label: "Figma", kind: "brand", icon: siFigma },
   security: { label: "Auth & Security", kind: "lucide", icon: KeyRound, color: "#F472B6" },
 } satisfies Record<string, TechDefinition>;
 

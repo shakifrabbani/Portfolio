@@ -34,7 +34,7 @@ export function Hero() {
         ))}
       </div>
 
-      <div className="container-site relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-6">
+      <div className="container-site relative grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-6">
         <div>
           <p style={delay(0)} className="intro inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-fg-2">
             <span className="relative grid size-2 place-items-center">
@@ -46,7 +46,7 @@ export function Hero() {
 
           <h1
             id="hero-title"
-            className="mt-6 font-display text-[2.6rem] font-extrabold leading-[1.04] tracking-[-0.035em] text-fg sm:text-6xl lg:text-[4rem] xl:text-[4.35rem]"
+            className="mt-6 font-display text-[2.6rem] font-extrabold leading-[1.04] tracking-[-0.035em] text-fg sm:text-6xl lg:text-[3.6rem] xl:text-[4.35rem]"
           >
             <span className="block overflow-hidden pb-[0.06em]">
               <span style={delay(80)} className="intro-line">
