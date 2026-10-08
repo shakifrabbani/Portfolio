@@ -218,7 +218,7 @@ const projectList: Project[] = [
     overview:
       "One platform, four roles. Admins and managers work in web panels, while inspectors and clients use mobile apps on the same Firebase data.",
     problem: "Admins, managers, inspectors and clients each need their own view of the same inspections.",
-    solution: "Role-based web panels and React Native apps on a shared Firebase back end.",
+    solution: "Role-based React web panels and React Native apps on a shared Firebase and Node.js back end.",
     features: ["Four user roles", "Web panels for admins and managers", "Mobile app for inspectors", "Mobile app for clients"],
     responsibilities: ["Development across the React Native apps and the Firebase data layer."],
     platforms: ["web", "mobile"],
@@ -228,11 +228,16 @@ const projectList: Project[] = [
       { label: "Inspector app", kind: "mobile" },
       { label: "Client app", kind: "mobile" },
     ],
-    backend: "Firebase",
-    stack: ["reactnative", "firebase"],
+    backend: "Firebase + Node.js",
+    stack: ["react", "reactnative", "firebase", "nodejs"],
     links: {},
-    preview: "inspection",
     accent: ["#22d3ee", "#6366f1"],
+    poster: {
+      src: "/projects/property-inspection-app-showcase.webp",
+      width: 1672,
+      height: 941,
+      alt: "Property Inspection App: the admin dashboard on a desktop, an inspection checklist and a property report on two phones and the inspections list on a laptop, for four roles (admin, manager, inspector and client), with inspection reports, property photos, task management, real-time sync, role-based access and a Firebase back end.",
+    },
   },
   {
     slug: "home-service-platform",
