@@ -293,10 +293,15 @@ const projectList: Project[] = [
       { label: "Express REST API", kind: "service" },
     ],
     backend: "Node.js + Express · MongoDB",
-    stack: ["react", "redux", "tailwind", "nodejs", "express", "mongodb"],
+    stack: ["react", "redux", "nodejs", "express", "mongodb", "tailwind"],
     links: { github: "https://github.com/shakifrabbani/Smart-Job-Portal-Application" },
-    preview: "jobs",
     accent: ["#6c63ff", "#4f8cff"],
+    poster: {
+      src: "/projects/smart-job-portal-showcase.webp",
+      width: 1672,
+      height: 941,
+      alt: "Smart Job Portal: the admin dashboard on a laptop, job search on one phone and job posting on another, for job seekers, employers, admins and managers, with job search, job posting, application tracking and candidate management.",
+    },
   },
 ];
 
