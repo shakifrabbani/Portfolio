@@ -5,18 +5,17 @@ import { CountUp } from "@/components/ui/CountUp";
 import { LanguageBars } from "@/components/ui/LanguageBars";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { skillGroups } from "@/data/content";
-import { projects } from "@/data/projects";
+import { clientProjectCount } from "@/data/projects";
 import { getGitHubSnapshot } from "@/lib/github";
 
 /** Real numbers only: public repo count and languages come from the GitHub API at build time. */
 export async function GitHubActivity() {
   const github = await getGitHubSnapshot();
-  const clientProjects = projects.filter((p) => p.context.startsWith("Client")).length;
   const technologies = new Set(skillGroups.flatMap((g) => g.items)).size;
 
   const stats = [
     { value: github.publicRepos, label: "Public repositories", icon: <FolderGit2 className="size-4" /> },
-    { value: clientProjects, label: "Client products in private repos", icon: <Lock className="size-4" /> },
+    { value: clientProjectCount, suffix: "+", label: "Client products in private repos", icon: <Lock className="size-4" /> },
     { value: technologies, label: "Tools and technologies", icon: <GitHubIcon className="size-4" /> },
   ];
 
@@ -51,7 +50,7 @@ export async function GitHubActivity() {
                 <div className="card spotlight h-full p-5">
                   <span className="text-accent-ink">{stat.icon}</span>
                   <p className="mt-3 font-display text-3xl font-extrabold tracking-tight text-fg">
-                    <CountUp value={stat.value} />
+                    <CountUp value={stat.value} suffix={stat.suffix} />
                   </p>
                   <p className="mt-1 text-[12.5px] text-fg-2">{stat.label}</p>
                 </div>

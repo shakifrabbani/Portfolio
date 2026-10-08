@@ -1,3 +1,5 @@
+import { clientProjectCount } from "./projects";
+
 /**
  * Personal details used across the site.
  * Every number here is backed by the CV or by public GitHub data. Edit freely, but keep claims verifiable:
@@ -44,9 +46,9 @@ export const profile = {
   },
 } as const;
 
-/** Hero stat row. Five client products come from the CV; 10+ adds the six public GitHub repositories. */
+/** Hero stat row. The client product count comes from data/projects.ts; 10+ adds the six public GitHub repositories. */
 export const heroStats = [
-  { value: "5", label: "Client products", icon: "package" },
+  { value: `${clientProjectCount}+`, label: "Client products", icon: "package" },
   { value: "10+", label: "Projects built", icon: "folder" },
   { value: "Full-Stack", label: "Web, Mobile & Backend", icon: "layers" },
   { value: "Available", label: "For opportunities", icon: "heart" },
