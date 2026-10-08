@@ -26,8 +26,8 @@ export function Projects() {
             </StaggerItem>
           ))}
         </Stagger>
-        {projects.some((p) => !p.screenshot) && (
-          <p className="mt-6 text-center text-xs text-fg-3">Project previews are illustrative interface mockups.</p>
+        {projects.some((p) => !p.screenshot && !p.poster) && (
+          <p className="mt-6 text-center text-xs text-fg-3">Some previews are illustrative interface mockups.</p>
         )}
       </div>
     </section>

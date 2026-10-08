@@ -78,9 +78,15 @@ export const projects: Project[] = [
     ],
     backend: "One back end for every app",
     stack: [],
-    links: {},
+    links: { live: "https://gray-dog-901682.hostingersite.com/site/" },
     preview: "restaurant",
     accent: ["#f97316", "#ef4444"],
+    poster: {
+      src: "/projects/hot-spicy-restaurant-system-showcase.webp",
+      width: 1672,
+      height: 941,
+      alt: "Hot & Spicy restaurant management system: the admin dashboard on a laptop, the POS ordering screen on a tablet and the kitchen display on a second tablet, covering POS, admin dashboard, kitchen display, menu management, reservations, orders and billing, and analytics.",
+    },
   },
   {
     slug: "retail-pos-system",

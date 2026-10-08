@@ -25,7 +25,7 @@ export default function ProjectsPage() {
           as="h1"
           label="Projects"
           title="Products and systems I've built"
-          description="Client work for restaurants, retail stores, salons and service businesses, plus open source projects. Previews are illustrative unless marked otherwise."
+          description="Client work for restaurants, retail stores, salons and service businesses, plus open source projects. Some previews are illustrative interface mockups."
         />
         <div className="space-y-6">
           {projects.map((project, i) => (
