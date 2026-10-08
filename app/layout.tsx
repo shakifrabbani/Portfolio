@@ -66,8 +66,11 @@ const personJsonLd = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jakarta.variable} ${mono.variable}`}>
-      <body>
+    // Browser extensions (ColorZilla, Grammarly, translators, dark-mode tools) add attributes to <html> and
+    // <body> before React hydrates. suppressHydrationWarning ignores attribute mismatches on these two tags
+    // only; everything inside them is still checked.
+    <html lang="en" className={`${inter.variable} ${jakarta.variable} ${mono.variable}`} suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <noscript>
           <style>{"[data-reveal]{opacity:1!important;transform:none!important}"}</style>
         </noscript>
