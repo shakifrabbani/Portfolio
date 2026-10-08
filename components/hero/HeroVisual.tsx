@@ -48,19 +48,19 @@ export function HeroVisual() {
   }, [reduce, mx, my]);
 
   return (
-    <div ref={ref} className="@container relative mx-auto aspect-square w-full max-w-[520px] lg:max-w-[min(600px,calc(100svh_-_150px))]">
+    <div ref={ref} className="@container relative mx-auto aspect-square w-full max-w-[520px] lg:max-w-[min(640px,calc(100svh_-_140px))]">
       <m.div style={{ y: drift }} className="absolute inset-0">
         {/* Back layer: deep glow, faint grid and the neon ring. Centred; shifts left on wide screens to make room for the cards. */}
         <m.div style={back} className="absolute inset-0" aria-hidden="true">
           <div className="intro-fade absolute inset-0">
-            <div className="absolute left-1/2 top-[57%] aspect-square h-[88%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgb(76_70_229/0.42),rgb(59_130_246/0.14)_42%,transparent_68%)] min-[1440px]:left-[42%]" />
+            <div className="absolute left-1/2 top-[57%] aspect-square h-[92%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgb(76_70_229/0.42),rgb(59_130_246/0.14)_42%,transparent_68%)] min-[1440px]:left-[43%]" />
             <div className="bg-grid absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_at_center,#000_22%,transparent_68%)]" />
             <NeonRing />
           </div>
         </m.div>
 
         {/* Portrait: the head rises above the top of the ring, as in the design. */}
-        <m.div style={person} className="absolute inset-y-0 left-[11%] right-[11%] min-[1440px]:left-[3%] min-[1440px]:right-[19%]">
+        <m.div style={person} className="absolute inset-y-0 left-[9%] right-[9%] min-[1440px]:left-[2%] min-[1440px]:right-[16%]">
           <div style={delay(150)} className="intro-fade h-full w-full">
             <Image
               src={portrait}
@@ -80,7 +80,7 @@ export function HeroVisual() {
           <FloatTile className="left-[-1%] top-[36%]" d={650} float="animate-float-slow">
             <TechIcon name="nodejs" className="size-[6cqw]" />
           </FloatTile>
-          <FloatTile className="left-[1%] top-[63%]" d={800} float="animate-float">
+          <FloatTile className="left-[1%] top-[63%] min-[1440px]:left-[-1%]" d={800} float="animate-float">
             <TechIcon name="typescript" className="size-[5.2cqw]" />
           </FloatTile>
           <FloatTile className="right-[12%] top-[3%] min-[1440px]:right-[22%]" d={700} float="animate-float-slow">
@@ -104,7 +104,7 @@ export function HeroVisual() {
 /** Gradient neon ring. The halo pulses on its own compositor layer, and the ring slowly rotates its light. */
 function NeonRing() {
   return (
-    <div className="absolute left-1/2 top-[57%] aspect-square h-[66%] -translate-x-1/2 -translate-y-1/2 min-[1440px]:left-[42%]">
+    <div className="absolute left-1/2 top-[57%] aspect-square h-[70%] -translate-x-1/2 -translate-y-1/2 min-[1440px]:left-[43%]">
       <div className="animate-spin-slow absolute inset-0">
         <svg viewBox="0 0 200 200" className="animate-ring-glow absolute inset-0 h-full w-full overflow-visible">
           <defs>
@@ -161,7 +161,7 @@ const solutions = [
 
 function BuildingWidget() {
   return (
-    <div style={delay(1000)} className="intro absolute left-[82%] top-[1%] hidden w-[29cqw] min-[1440px]:block" aria-hidden="true">
+    <div style={delay(1000)} className="intro absolute left-[85%] top-[1%] hidden w-[29cqw] min-[1440px]:block" aria-hidden="true">
       <div className="rounded-[2.6cqw] border border-white/10 bg-surface/75 p-[2.3cqw] shadow-[0_24px_50px_-24px_rgb(0_0_0/0.95)] backdrop-blur-md">
         <p className="text-[1.65cqw] font-medium uppercase tracking-[0.14em] text-fg-3">Building</p>
         <p className="mt-[0.3cqw] text-[2.1cqw] font-semibold text-fg">Modern Solutions</p>
@@ -183,7 +183,7 @@ function BuildingWidget() {
 
 function CodeCard() {
   return (
-    <div style={delay(1150)} className="intro absolute bottom-[4%] left-[82%] hidden w-[39cqw] min-[1440px]:block" aria-hidden="true">
+    <div style={delay(1150)} className="intro absolute bottom-[4%] left-[85%] hidden w-[36cqw] min-[1440px]:block" aria-hidden="true">
       <div className="overflow-hidden rounded-[2.6cqw] border border-violet-400/25 bg-[#0b0f1d]/90 shadow-[0_30px_60px_-28px_rgb(0_0_0/1),0_0_32px_-12px_rgb(124_58_237/0.6)] backdrop-blur-md">
         <div className="flex items-center gap-[1cqw] border-b border-white/[0.06] px-[2.3cqw] py-[1.7cqw]">
           <span className="size-[1.7cqw] rounded-full bg-[#ff5f57]" />
@@ -191,7 +191,7 @@ function CodeCard() {
           <span className="size-[1.7cqw] rounded-full bg-[#28c840]" />
           <span className="ml-[1.4cqw] font-mono text-[1.7cqw] text-fg-3">developer.ts</span>
         </div>
-        <pre className="px-[2.4cqw] py-[2.2cqw] font-mono text-[1.9cqw] leading-[1.75]">
+        <pre className="px-[2.2cqw] py-[2.2cqw] font-mono text-[1.8cqw] leading-[1.75]">
           <code>
             <span className="text-[#c792ea]">const</span> <span className="text-[#82aaff]">developer</span> <span className="text-fg-3">=</span>{" "}
             <span className="text-fg-2">{"{"}</span>
