@@ -12,6 +12,8 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   reactStrictMode: true,
   images: { unoptimized: true },
+  // Hide the "N" dev-tools button `next dev` draws in the corner. Compile and runtime errors still show.
+  devIndicators: false,
 };
 
 export default nextConfig;
