@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!project) return {};
   const url = `${profile.siteUrl}/projects/${project.slug}/`;
   // openGraph and twitter replace the layout's objects wholesale, so the share image is set again here.
-  const image = `${profile.siteUrl}${project.poster?.cover ?? "/og-card.jpg"}`;
+  const image = `${profile.siteUrl}/og-card.jpg`;
   return {
     title: project.title,
     description: project.summary,
