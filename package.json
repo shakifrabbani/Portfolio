@@ -10,7 +10,7 @@
     "build": "next build",
     "preview": "npx --yes serve@14 out",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "postbuild": "node scripts/fix-export-segments.mjs"
   },
   "dependencies": {
