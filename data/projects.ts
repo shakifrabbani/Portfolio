@@ -29,7 +29,10 @@ export interface Project {
   accent: [string, string];
   /** Optional real screenshot under /public (e.g. "/projects/retail-pos.webp"). Replaces the coded preview everywhere. */
   screenshot?: string;
-  /** Optional design poster under /public. Shown whole, never cropped, on project cards and the case study. */
+  /**
+   * Optional design poster under /public. Fills its frame on project cards and the case study, which take
+   * the poster's own aspect ratio, so nothing is cropped. A landscape image around 16:9 suits the card grid.
+   */
   poster?: {
     src: string;
     width: number;

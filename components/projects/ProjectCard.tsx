@@ -14,12 +14,15 @@ import type { Project } from "@/data/projects";
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="card spotlight lift group relative flex h-full flex-col overflow-hidden p-3 has-[h3_a:focus-visible]:outline-2 has-[h3_a:focus-visible]:outline-offset-3 has-[h3_a:focus-visible]:outline-accent-soft">
-      <div className="relative overflow-hidden rounded-[14px] border border-line">
-        <ProjectVisual project={project} idPrefix={`card-${project.slug}`} sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        />
+      {/* A 16:10 slot keeps titles level across a grid row when a poster's picture has a different shape. */}
+      <div className="sm:aspect-[16/10]">
+        <div className="relative overflow-hidden rounded-[14px] border border-line">
+          <ProjectVisual project={project} idPrefix={`card-${project.slug}`} sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          />
+        </div>
       </div>
 
       <div className="flex flex-1 flex-col px-2 pb-1.5 pt-4">
