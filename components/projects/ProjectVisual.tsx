@@ -10,16 +10,20 @@ type ProjectVisualProps = {
   sizes?: string;
 };
 
-/** Real screenshot when `screenshot` is set in data/projects.ts, otherwise the coded interface preview. */
+/**
+ * Real image when data/projects.ts has one (a screenshot, else the poster's 16:10 cover crop),
+ * otherwise the coded interface preview.
+ */
 export function ProjectVisual({ project, idPrefix, priority = false, sizes = "(min-width: 1024px) 640px, 100vw" }: ProjectVisualProps) {
-  if (project.screenshot) {
+  const image = project.screenshot ?? project.poster?.cover;
+  if (image) {
     return (
       <div className="relative aspect-[16/10] w-full overflow-hidden">
         <Image
-          src={withBasePath(project.screenshot)}
-          alt={`${project.title} interface`}
+          src={withBasePath(image)}
+          alt={project.screenshot ? `${project.title} interface` : `${project.title} project poster`}
           fill
-          priority={priority}
+          preload={priority}
           sizes={sizes}
           className="preview-canvas object-cover object-top"
         />

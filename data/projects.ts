@@ -29,6 +29,11 @@ export interface Project {
   accent: [string, string];
   /** Optional real screenshot under /public (e.g. "/projects/retail-pos.webp"). Replaces the coded preview everywhere. */
   screenshot?: string;
+  /**
+   * Optional design poster under /public, shown whole on the case study in place of the interface preview.
+   * `cover` is a 16:10 crop of it used on project cards and as the page's link-preview image.
+   */
+  poster?: { src: string; cover: string; width: number; height: number; alt: string };
 }
 
 /**
@@ -123,6 +128,13 @@ export const projects: Project[] = [
     links: { live: "https://humassignaturesalon.com" },
     preview: "salon",
     accent: ["#f472b6", "#f59e0b"],
+    poster: {
+      src: "/projects/humas-signature-salon-poster.webp",
+      cover: "/projects/humas-signature-salon-cover.jpg",
+      width: 1122,
+      height: 1402,
+      alt: "Huma's Signature Salon project poster: the salon management system shown on laptop, tablet and phone screens, highlighting online booking, services and packages, staff profiles, gallery, pricing and a responsive UI.",
+    },
   },
   {
     slug: "property-inspection-app",

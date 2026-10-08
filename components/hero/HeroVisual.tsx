@@ -70,7 +70,7 @@ export function HeroVisual() {
               <Image
                 src={portrait}
                 alt="Portrait of M. Shakif Rabbani"
-                priority
+                preload
                 sizes="(min-width: 1024px) 560px, 88vw"
                 className="portrait-fade h-full w-full object-contain object-bottom drop-shadow-[0_0_38px_rgb(124_58_237/0.4)]"
               />

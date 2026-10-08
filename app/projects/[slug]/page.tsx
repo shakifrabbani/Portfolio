@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowUpRight, CheckCircle2, CircleAlert, Lightbulb, Trophy }
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ProjectPoster } from "@/components/projects/ProjectPoster";
 import { ProjectVisual } from "@/components/projects/ProjectVisual";
 import { SystemMap } from "@/components/projects/SystemMap";
 import { GitHubIcon } from "@/components/ui/BrandIcons";
@@ -24,11 +25,14 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const project = getProject(slug);
   if (!project) return {};
   const url = `${profile.siteUrl}/projects/${project.slug}/`;
+  // openGraph and twitter replace the layout's objects wholesale, so the share image is set again here.
+  const image = `${profile.siteUrl}${project.poster?.cover ?? "/og-card.jpg"}`;
   return {
     title: project.title,
     description: project.summary,
     alternates: { canonical: url },
-    openGraph: { url, title: `${project.title} | ${profile.name}`, description: project.summary },
+    openGraph: { url, title: `${project.title} | ${profile.name}`, description: project.summary, images: [image] },
+    twitter: { card: "summary_large_image", title: `${project.title} | ${profile.name}`, description: project.summary, images: [image] },
   };
 }
 
@@ -97,10 +101,16 @@ export default async function ProjectPage({ params }: Params) {
         </header>
 
         <Reveal delay={0.1} y={50} className="mt-12">
-          <div className="overflow-hidden rounded-[22px] border border-line-strong shadow-[0_50px_120px_-50px_rgb(108_99_255/0.45)]">
-            <ProjectVisual project={project} idPrefix={`detail-${project.slug}`} priority sizes="(min-width: 1280px) 1180px, 100vw" />
-          </div>
-          {!project.screenshot && <p className="mt-3 text-center text-xs text-fg-3">Illustrative interface preview.</p>}
+          {project.poster ? (
+            <ProjectPoster poster={project.poster} />
+          ) : (
+            <>
+              <div className="overflow-hidden rounded-[22px] border border-line-strong shadow-[0_50px_120px_-50px_rgb(108_99_255/0.45)]">
+                <ProjectVisual project={project} idPrefix={`detail-${project.slug}`} priority sizes="(min-width: 1280px) 1180px, 100vw" />
+              </div>
+              {!project.screenshot && <p className="mt-3 text-center text-xs text-fg-3">Illustrative interface preview.</p>}
+            </>
+          )}
         </Reveal>
 
         <div className="mt-20 grid grid-cols-1 gap-5 md:grid-cols-2">
