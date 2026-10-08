@@ -32,7 +32,9 @@ export function SystemMap({ project }: { project: Project }) {
 
       <div aria-hidden="true" className="relative mx-auto mt-6 h-10 w-px bg-gradient-to-b from-line-strong to-accent/60" />
       <div aria-hidden="true" className="relative mx-auto h-px max-w-xl bg-gradient-to-r from-transparent via-accent/70 to-transparent">
-        <span className="animate-flow absolute top-1/2 size-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_12px_3px_rgb(155_140_255/0.9)]" />
+        <span className="animate-flow absolute inset-0">
+          <span className="absolute left-0 top-1/2 size-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_12px_3px_rgb(155_140_255/0.9)]" />
+        </span>
       </div>
       <div aria-hidden="true" className="relative mx-auto h-6 w-px bg-accent/60" />
 

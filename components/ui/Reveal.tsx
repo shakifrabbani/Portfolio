@@ -13,7 +13,7 @@ type RevealProps = {
 };
 
 /** Fades and lifts content into view once. Framer's MotionConfig turns the motion off for reduced-motion users. */
-export function Reveal({ children, className, delay = 0, y = 30, amount = 0.2 }: RevealProps) {
+export function Reveal({ children, className, delay = 0, y = 18, amount = 0.2 }: RevealProps) {
   return (
     <m.div
       data-reveal=""
@@ -21,7 +21,7 @@ export function Reveal({ children, className, delay = 0, y = 30, amount = 0.2 }:
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount }}
-      transition={{ duration: 0.8, delay, ease: EASE }}
+      transition={{ duration: 0.5, delay, ease: EASE }}
     >
       {children}
     </m.div>
@@ -33,7 +33,7 @@ export function Stagger({
   children,
   className,
   delay = 0,
-  stagger = 0.08,
+  stagger = 0.06,
   amount = 0.15,
 }: {
   children: ReactNode;
@@ -55,14 +55,14 @@ export function Stagger({
   );
 }
 
-export function StaggerItem({ children, className, y = 24 }: { children: ReactNode; className?: string; y?: number }) {
+export function StaggerItem({ children, className, y = 14 }: { children: ReactNode; className?: string; y?: number }) {
   return (
     <m.div
       data-reveal=""
       className={className}
       variants={{
         hidden: { opacity: 0, y },
-        show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
+        show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: EASE } },
       }}
     >
       {children}

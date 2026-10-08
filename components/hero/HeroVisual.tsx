@@ -38,14 +38,25 @@ export function HeroVisual() {
   const tiles = useDepth(sx, sy, 20);
   const cards = useDepth(sx, sy, 30);
 
+  // Mouse parallax runs only while the hero is on screen, so moving the mouse further down the page costs nothing.
   useEffect(() => {
-    if (reduce || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    const el = ref.current;
+    if (!el || reduce || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     const onMove = (e: PointerEvent) => {
       mx.set(e.clientX / window.innerWidth - 0.5);
       my.set(e.clientY / window.innerHeight - 0.5);
     };
-    window.addEventListener("pointermove", onMove, { passive: true });
-    return () => window.removeEventListener("pointermove", onMove);
+    let listening = false;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !listening) window.addEventListener("pointermove", onMove, { passive: true });
+      if (!entry.isIntersecting && listening) window.removeEventListener("pointermove", onMove);
+      listening = entry.isIntersecting;
+    });
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("pointermove", onMove);
+    };
   }, [reduce, mx, my]);
 
   return (
@@ -71,6 +82,8 @@ export function HeroVisual() {
                 src={portrait}
                 alt="Portrait of M. Shakif Rabbani"
                 preload
+                // Built-in static import with a hashed name, so there are no pre-built copies: serve it as is.
+                unoptimized
                 sizes="(min-width: 1024px) 560px, 88vw"
                 className="portrait-fade h-full w-full object-contain object-bottom drop-shadow-[0_0_38px_rgb(124_58_237/0.4)]"
               />
@@ -147,7 +160,7 @@ function FloatTile({ children, className, d, float }: { children: ReactNode; cla
     <div style={delay(d)} className={cn("intro-fade absolute grid", className)}>
       <div
         className={cn(
-          "grid size-[12.5cqw] place-items-center rounded-[3.2cqw] border border-violet-400/30 bg-[#0b1024]/80 shadow-[0_0_30px_-6px_rgb(124_58_237/0.7),inset_0_1px_0_rgb(255_255_255/0.08)] backdrop-blur-md",
+          "grid size-[12.5cqw] place-items-center rounded-[3.2cqw] border border-violet-400/30 bg-[#0b1024]/95 shadow-[0_0_30px_-6px_rgb(124_58_237/0.7),inset_0_1px_0_rgb(255_255_255/0.08)]",
           float,
         )}
         style={{ animationDelay: `${-d * 3}ms` }}
@@ -168,7 +181,7 @@ const solutions = [
 function BuildingWidget() {
   return (
     <div data-hero-card="" style={delay(1000)} className="intro absolute left-[102%] top-[2%] hidden w-[37cqw] xl:block" aria-hidden="true">
-      <div className="rounded-[3cqw] border border-white/10 bg-surface/75 p-[3cqw] shadow-[0_24px_50px_-24px_rgb(0_0_0/0.95)] backdrop-blur-md">
+      <div className="rounded-[3cqw] border border-white/10 bg-surface/95 p-[3cqw] shadow-[0_24px_50px_-24px_rgb(0_0_0/0.95)]">
         <p className="text-[2.1cqw] font-medium uppercase tracking-[0.14em] text-fg-3">Building</p>
         <p className="mt-[0.4cqw] text-[2.7cqw] font-semibold text-fg">Modern Solutions</p>
         <ul className="mt-[2.3cqw] space-y-[1.4cqw]">
@@ -190,7 +203,7 @@ function BuildingWidget() {
 function CodeCard() {
   return (
     <div data-hero-card="" style={delay(1150)} className="intro absolute bottom-[10%] left-[90%] hidden w-[49cqw] xl:block" aria-hidden="true">
-      <div className="overflow-hidden rounded-[3cqw] border border-violet-400/25 bg-[#0b0f1d]/90 shadow-[0_30px_60px_-28px_rgb(0_0_0/1),0_0_32px_-12px_rgb(124_58_237/0.6)] backdrop-blur-md">
+      <div className="overflow-hidden rounded-[3cqw] border border-violet-400/25 bg-[#0b0f1d]/95 shadow-[0_30px_60px_-28px_rgb(0_0_0/1),0_0_32px_-12px_rgb(124_58_237/0.6)]">
         <div className="flex items-center gap-[1.3cqw] border-b border-white/[0.06] px-[3cqw] py-[2.2cqw]">
           <span className="size-[2.1cqw] rounded-full bg-[#ff5f57]" />
           <span className="size-[2.1cqw] rounded-full bg-[#febc2e]" />

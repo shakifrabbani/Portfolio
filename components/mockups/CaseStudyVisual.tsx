@@ -14,13 +14,13 @@ export function CaseStudyVisual({ project }: { project: Project }) {
       </div>
 
       <div className="animate-float-slow absolute -left-1 top-1 sm:left-0">
-        <div className="flex items-center gap-2 rounded-xl border border-amber-400/30 bg-ink/90 px-3 py-2 text-[11px] font-medium text-amber-200 shadow-[0_18px_40px_-18px_rgb(0_0_0/0.9)] backdrop-blur">
+        <div className="flex items-center gap-2 rounded-xl border border-amber-400/30 bg-ink/90 px-3 py-2 text-[11px] font-medium text-amber-200 shadow-[0_18px_40px_-18px_rgb(0_0_0/0.9)]">
           <CloudOff className="size-3.5" /> Offline mode · billing continues
         </div>
       </div>
 
       <div className="animate-float absolute -bottom-1 right-0 w-[38%] min-w-[150px] max-w-[210px] [animation-delay:-2s] sm:right-2">
-        <div className="rounded-2xl border border-line-strong bg-surface/95 p-3.5 shadow-[0_30px_60px_-28px_rgb(0_0_0/1)] backdrop-blur">
+        <div className="rounded-2xl border border-line-strong bg-surface/95 p-3.5 shadow-[0_30px_60px_-28px_rgb(0_0_0/1)]">
           <div className="flex items-center justify-between text-[11px] font-semibold text-fg">
             <span className="inline-flex items-center gap-1.5">
               <Receipt className="size-3.5 text-accent-ink" /> Receipt

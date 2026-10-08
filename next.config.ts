@@ -11,7 +11,14 @@ const nextConfig: NextConfig = {
   basePath,
   trailingSlash: true,
   reactStrictMode: true,
-  images: { unoptimized: true },
+  // The export cannot resize images on request, so a custom loader serves pre-built smaller copies of the
+  // posters (scripts/image-variants.mjs). deviceSizes match those copies, so each srcset entry maps to a real file.
+  images: {
+    loader: "custom",
+    loaderFile: "./lib/image-loader.ts",
+    deviceSizes: [640, 960, 1280, 1920],
+    imageSizes: [384],
+  },
   // Hide the "N" dev-tools button `next dev` draws in the corner. Compile and runtime errors still show.
   devIndicators: false,
 };

@@ -74,8 +74,8 @@ export function Navbar() {
         className={cn(
           "mx-auto flex h-14 max-w-[1240px] items-center justify-between rounded-2xl border px-2.5 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-500 ease-[var(--ease-premium)] sm:px-3",
           scrolled || open
-            ? "border-line-strong bg-ink/75 shadow-[0_20px_50px_-30px_rgb(0_0_0/0.9)] backdrop-blur-xl"
-            : "border-line bg-white/[0.015] backdrop-blur-[2px]",
+            ? "border-line-strong bg-ink/80 shadow-[0_20px_50px_-30px_rgb(0_0_0/0.9)] backdrop-blur-md"
+            : "border-line bg-white/[0.015]",
         )}
       >
         <Logo variant="wordmark" onNavigate={close} />
@@ -139,7 +139,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.35, ease: EASE }}
-            className="mx-auto mt-2 max-w-[1240px] overflow-hidden rounded-2xl border border-line-strong bg-ink/95 p-3 shadow-[0_30px_80px_-30px_rgb(0_0_0/0.95)] backdrop-blur-xl md:hidden"
+            className="mx-auto mt-2 max-w-[1240px] overflow-hidden rounded-2xl border border-line-strong bg-ink/95 p-3 shadow-[0_30px_80px_-30px_rgb(0_0_0/0.95)] md:hidden"
           >
             <m.ul
               initial="hidden"

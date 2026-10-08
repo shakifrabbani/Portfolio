@@ -100,7 +100,7 @@ export default async function ProjectPage({ params }: Params) {
           </Reveal>
         </header>
 
-        <Reveal delay={0.1} y={50} className="mt-12">
+        <Reveal delay={0.05} y={20} className="mt-12">
           {project.poster ? (
             <ProjectPoster poster={project.poster} liveUrl={project.links.live} />
           ) : (

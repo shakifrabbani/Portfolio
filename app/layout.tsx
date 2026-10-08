@@ -7,7 +7,9 @@ import { FloatingActions } from "@/components/layout/FloatingActions";
 import { Footer } from "@/components/layout/Footer";
 import { MotionProvider } from "@/components/layout/MotionProvider";
 import { Navbar } from "@/components/layout/Navbar";
+import { PauseOffscreenAnimations } from "@/components/layout/PauseOffscreenAnimations";
 import { PointerEffects } from "@/components/layout/PointerEffects";
+import { RenderAllSections } from "@/components/layout/RenderAllSections";
 import { SiteBackground } from "@/components/layout/SiteBackground";
 import { profile } from "@/data/profile";
 
@@ -64,6 +66,14 @@ const personJsonLd = {
   sameAs: [profile.socials.github, profile.socials.linkedin],
 };
 
+const renderAllSectionsScript = `(function (root) {
+  var all = function () { root.dataset.sections = "all"; };
+  if (location.hash) return all();
+  document.addEventListener("click", function (e) {
+    if (e.target.closest && e.target.closest("a[href*='#']")) all();
+  }, true);
+})(document.documentElement);`;
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     // Browser extensions (ColorZilla, Grammarly, translators, dark-mode tools) add attributes to <html> and
@@ -71,8 +81,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     // only; everything inside them is still checked.
     <html lang="en" className={`${inter.variable} ${jakarta.variable} ${mono.variable}`} suppressHydrationWarning>
       <body suppressHydrationWarning>
+        {/* Runs before anything renders: opened with a #hash, or an anchor clicked before React loads, renders every
+            section first so the browser scrolls to the real position (see RenderAllSections). */}
+        <script dangerouslySetInnerHTML={{ __html: renderAllSectionsScript }} />
         <noscript>
-          <style>{"[data-reveal]{opacity:1!important;transform:none!important}"}</style>
+          <style>{"[data-reveal]{opacity:1!important;transform:none!important}main>section{content-visibility:visible!important}"}</style>
         </noscript>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
         <a
@@ -89,6 +102,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <FloatingActions />
           <CustomCursor />
           <PointerEffects />
+          <PauseOffscreenAnimations />
+          <RenderAllSections />
         </MotionProvider>
       </body>
     </html>

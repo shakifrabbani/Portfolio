@@ -4,7 +4,9 @@
   "private": true,
   "description": "Portfolio of M. Shakif Rabbani, Software Engineer and Full-Stack Developer.",
   "scripts": {
+    "predev": "node scripts/image-variants.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/image-variants.mjs",
     "build": "next build",
     "preview": "npx --yes serve@14 out",
     "lint": "eslint .",

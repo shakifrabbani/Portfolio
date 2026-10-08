@@ -39,7 +39,7 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-line bg-ink/60 p-2 backdrop-blur-md">
+              <div className="rounded-2xl border border-line bg-ink/80 p-2">
                 <ContactRow label="Email" icon={<span className="text-[13px] font-semibold">@</span>}>
                   <a href={`mailto:${profile.email}`} className="truncate font-medium text-fg hover:text-accent-ink">
                     {profile.email}

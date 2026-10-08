@@ -27,8 +27,9 @@ export function CustomCursor() {
   const [visible, setVisible] = useState(false);
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
-  const ringX = useSpring(x, { stiffness: 420, damping: 38, mass: 0.6 });
-  const ringY = useSpring(y, { stiffness: 420, damping: 38, mass: 0.6 });
+  // Critically damped and light: the ring settles in about 75 ms, so it keeps up with the pointer with only a hint of trail.
+  const ringX = useSpring(x, { stiffness: 700, damping: 27, mass: 0.25 });
+  const ringY = useSpring(y, { stiffness: 700, damping: 27, mass: 0.25 });
 
   useEffect(() => {
     if (!enabled) return;
@@ -62,10 +63,10 @@ export function CustomCursor() {
 
   return (
     <div aria-hidden="true" className={cn("pointer-events-none fixed inset-0 z-[100] transition-opacity duration-300", visible ? "opacity-100" : "opacity-0")}>
-      <m.div className="absolute left-0 top-0" style={{ x: ringX, y: ringY }}>
+      <m.div className="absolute left-0 top-0 will-change-transform" style={{ x: ringX, y: ringY }}>
         <m.div
           className={cn(
-            "-translate-x-1/2 -translate-y-1/2 flex items-center justify-center rounded-full border backdrop-blur-[1px]",
+            "-translate-x-1/2 -translate-y-1/2 flex items-center justify-center rounded-full border",
             variant === "project"
               ? "border-accent-soft/50 bg-accent/85 shadow-[0_10px_40px_-8px_rgb(108_99_255/0.8)]"
               : variant === "link"
@@ -73,12 +74,12 @@ export function CustomCursor() {
                 : "border-white/25 bg-transparent",
           )}
           animate={{ width: ringSize, height: ringSize }}
-          transition={{ type: "spring", stiffness: 300, damping: 26 }}
+          transition={{ type: "spring", stiffness: 600, damping: 40, mass: 0.5 }}
         >
           {variant === "project" && <span className="text-[11px] font-semibold tracking-wide text-white">View Project</span>}
         </m.div>
       </m.div>
-      <m.div className="absolute left-0 top-0" style={{ x, y }}>
+      <m.div className="absolute left-0 top-0 will-change-transform" style={{ x, y }}>
         <div className={cn("size-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white transition-opacity duration-200", variant === "project" && "opacity-0")} />
       </m.div>
     </div>
