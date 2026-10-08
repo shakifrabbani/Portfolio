@@ -1,13 +1,14 @@
 import { ArrowUp, Mail } from "lucide-react";
 import { Logo } from "./Logo";
-import { GitHubIcon, LinkedInIcon } from "@/components/ui/BrandIcons";
-import { profile } from "@/data/profile";
+import { GitHubIcon, LinkedInIcon, WhatsAppIcon } from "@/components/ui/BrandIcons";
+import { profile, whatsappUrl } from "@/data/profile";
 
 export function Footer() {
   const year = new Date().getFullYear();
   const socials = [
     { label: "LinkedIn", href: profile.socials.linkedin, icon: <LinkedInIcon className="size-4" /> },
     { label: "GitHub", href: profile.socials.github, icon: <GitHubIcon className="size-4" /> },
+    { label: "WhatsApp", href: whatsappUrl, icon: <WhatsAppIcon className="size-4" /> },
     { label: "Email", href: `mailto:${profile.email}`, icon: <Mail className="size-4" aria-hidden="true" /> },
   ];
 

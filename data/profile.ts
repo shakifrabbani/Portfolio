@@ -14,6 +14,8 @@ export const profile = {
   tagline: "Building scalable web, mobile and business applications.",
   location: "Lahore, Pakistan",
   email: "shakifrabbani@gmail.com",
+  /** WhatsApp in the international format wa.me expects (no "+" or spaces); `display` is how it is shown. */
+  whatsapp: { number: "923014461010", display: "+92 301 4461010" },
   resumePath: "/Shakif-Rabbani-Resume.pdf",
   company: "Robonex",
   availability: {
@@ -45,6 +47,11 @@ export const profile = {
     ],
   },
 } as const;
+
+/** Opens a WhatsApp chat with Shakif, with a first message already typed for the visitor to send or edit. */
+export const whatsappUrl = `https://wa.me/${profile.whatsapp.number}?text=${encodeURIComponent(
+  "Hi Shakif, I came across your portfolio and would like to talk about an opportunity.",
+)}`;
 
 /**
  * Client projects delivered: 10+, as stated by Shakif, though the site lists only some of them. Never shown lower

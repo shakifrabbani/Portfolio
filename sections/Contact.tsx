@@ -1,15 +1,13 @@
 import { Download, Globe2, MapPin } from "lucide-react";
 import type { ReactNode } from "react";
-import { GitHubIcon, LinkedInIcon } from "@/components/ui/BrandIcons";
+import { GitHubIcon, LinkedInIcon, WhatsAppIcon } from "@/components/ui/BrandIcons";
 import { Button, ButtonArrow } from "@/components/ui/Button";
 import { CopyButton } from "@/components/ui/CopyButton";
 import { Reveal } from "@/components/ui/Reveal";
-import { profile } from "@/data/profile";
+import { profile, whatsappUrl } from "@/data/profile";
 import { withBasePath } from "@/lib/utils";
 
 export function Contact() {
-  const mailto = `mailto:${profile.email}?subject=${encodeURIComponent("Opportunity for Shakif Rabbani")}`;
-
   return (
     <section id="contact" aria-labelledby="contact-title" className="relative py-20 sm:py-24">
       <div className="container-site">
@@ -32,8 +30,8 @@ export function Contact() {
                   I&apos;m open to software engineering roles, freelance projects and collaborations on web, mobile and business applications.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Button href={mailto} size="lg">
-                    Start a Conversation <ButtonArrow />
+                  <Button href={whatsappUrl} size="lg" external ariaLabel="Start a conversation on WhatsApp">
+                    <WhatsAppIcon className="size-4" /> Start a Conversation <ButtonArrow />
                   </Button>
                   <Button href={withBasePath(profile.resumePath)} variant="secondary" size="lg" download>
                     <Download className="size-4" aria-hidden="true" /> Download Resume
@@ -47,6 +45,12 @@ export function Contact() {
                     {profile.email}
                   </a>
                   <CopyButton value={profile.email} label="Copy email address" className="ml-auto" />
+                </ContactRow>
+                <ContactRow label="WhatsApp" icon={<WhatsAppIcon className="size-4" />}>
+                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="truncate font-medium text-fg hover:text-accent-ink">
+                    {profile.whatsapp.display}
+                  </a>
+                  <CopyButton value={`+${profile.whatsapp.number}`} label="Copy WhatsApp number" className="ml-auto" />
                 </ContactRow>
                 <ContactRow label="LinkedIn" icon={<LinkedInIcon className="size-4" />}>
                   <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="truncate font-medium text-fg hover:text-accent-ink">

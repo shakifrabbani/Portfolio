@@ -56,6 +56,7 @@ const personJsonLd = {
   url: `${profile.siteUrl}/`,
   image: ogImage,
   email: `mailto:${profile.email}`,
+  telephone: `+${profile.whatsapp.number}`,
   address: { "@type": "PostalAddress", addressLocality: "Lahore", addressCountry: "PK" },
   worksFor: { "@type": "Organization", name: profile.company },
   alumniOf: { "@type": "CollegeOrUniversity", name: "The Islamia University of Bahawalpur" },
