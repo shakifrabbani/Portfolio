@@ -1,19 +1,19 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { ProjectVisual } from "@/components/projects/ProjectVisual";
+import { Button, ButtonArrow } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { TechIcon, techLabel } from "@/components/ui/TechIcon";
 import type { Project } from "@/data/projects";
 
-/** Whole card links to the case study. Hover: preview parallax + scale, spotlight glow, arrow lifts diagonally. */
+/**
+ * The whole card opens the case study through a stretched title link, so a project with a live site can
+ * also offer its own "Visit Site" link above it without nesting anchors.
+ * Hover: preview parallax + scale, spotlight glow, arrow lifts diagonally.
+ */
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <Link
-      href={`/projects/${project.slug}/`}
-      data-cursor="project"
-      className="card spotlight lift group flex h-full flex-col overflow-hidden p-3"
-      aria-label={`${project.title}: view case study`}
-    >
+    <article className="card spotlight lift group relative flex h-full flex-col overflow-hidden p-3 has-[h3_a:focus-visible]:outline-2 has-[h3_a:focus-visible]:outline-offset-3 has-[h3_a:focus-visible]:outline-accent-soft">
       <div className="relative overflow-hidden rounded-[14px] border border-line">
         <ProjectVisual project={project} idPrefix={`card-${project.slug}`} sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" />
         <div
@@ -23,7 +23,16 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
 
       <div className="flex flex-1 flex-col px-2 pb-1.5 pt-4">
-        <h3 className="text-[15px] font-semibold text-fg">{project.title}</h3>
+        <h3 className="text-[15px] font-semibold text-fg">
+          <Link
+            href={`/projects/${project.slug}/`}
+            data-cursor="project"
+            aria-label={`${project.title}: view case study`}
+            className="after:absolute after:inset-0 after:z-[1] after:content-[''] focus-visible:outline-none"
+          >
+            {project.title}
+          </Link>
+        </h3>
         <span className="mt-2 inline-flex w-fit rounded-md border border-accent/25 bg-accent/10 px-2 py-0.5 text-[11px] font-medium text-accent-ink">
           {project.category}
         </span>
@@ -45,14 +54,28 @@ export function ProjectCard({ project }: { project: Project }) {
                   </li>
                 ))}
           </ul>
-          <span className="grid size-9 shrink-0 place-items-center rounded-full border border-line-strong text-fg-2 transition-[background-color,border-color,color] duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white">
-            <ArrowUpRight
-              className="size-4 transition-transform duration-300 ease-[var(--ease-premium)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-              aria-hidden="true"
-            />
-          </span>
+          <div className="flex items-center gap-2">
+            {project.links.live && (
+              <Button
+                href={project.links.live}
+                variant="secondary"
+                size="sm"
+                external
+                ariaLabel={`Visit the ${project.title} live site`}
+                className="z-[2] h-9 px-3"
+              >
+                Visit Site <ButtonArrow diagonal />
+              </Button>
+            )}
+            <span className="grid size-9 shrink-0 place-items-center rounded-full border border-line-strong text-fg-2 transition-[background-color,border-color,color] duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white">
+              <ArrowUpRight
+                className="size-4 transition-transform duration-300 ease-[var(--ease-premium)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </span>
+          </div>
         </div>
       </div>
-    </Link>
+    </article>
   );
 }
