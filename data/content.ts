@@ -1,11 +1,15 @@
 import type { TechKey } from "./tech";
 
+/**
+ * Navbar items. Each `id` is a home-page section used for scroll highlighting; an item with `href` opens its
+ * own page instead of scrolling to that section.
+ */
 export const navigation = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
+  { id: "projects", label: "Projects", href: "/projects/" },
   { id: "contact", label: "Contact" },
 ] as const;
 

@@ -13,11 +13,16 @@ import { profile } from "@/data/profile";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { cn, EASE, withBasePath } from "@/lib/utils";
 
+type NavItem = (typeof navigation)[number];
+
 const sectionIds = navigation.map((item) => item.id);
 
+/** Path without its trailing slash ("/projects/" -> "/projects"), keeping "/" for the home page. */
+const trimSlash = (path: string) => path.replace(/\/+$/, "") || "/";
+
 export function Navbar() {
-  const pathname = usePathname();
-  const isHome = pathname === "/" || pathname === "";
+  const pathname = trimSlash(usePathname() ?? "/");
+  const isHome = pathname === "/";
   const active = useActiveSection(sectionIds, isHome);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -51,6 +56,16 @@ export function Navbar() {
   }, [open]);
 
   const hrefFor = (id: string) => (isHome ? `#${id}` : `/#${id}`);
+  /** Page links (Projects) open their own route; section links scroll on the home page or return to it. */
+  const itemHref = (item: NavItem) => ("href" in item ? item.href : hrefFor(item.id));
+  /** "page" while on that page or below it (a case study counts as Projects), "true" for the section in view at home. */
+  const currentFor = (item: NavItem): "page" | "true" | undefined => {
+    if ("href" in item) {
+      const route = trimSlash(item.href);
+      if (pathname === route || pathname.startsWith(`${route}/`)) return "page";
+    }
+    return isHome && active === item.id ? "true" : undefined;
+  };
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
@@ -67,13 +82,13 @@ export function Navbar() {
 
         <ul className="relative hidden items-center gap-0.5 md:flex">
           {navigation.map((item) => {
-            const isActive = isHome && active === item.id;
+            const current = currentFor(item);
+            const isActive = Boolean(current);
             return (
               <li key={item.id}>
                 <NavLink
-                  href={hrefFor(item.id)}
-                  isHome={isHome}
-                  aria-current={isActive ? "true" : undefined}
+                  href={itemHref(item)}
+                  aria-current={current}
                   className={cn(
                     "group/link relative block rounded-lg px-3.5 py-2 text-[13px] font-medium transition-colors duration-300",
                     isActive ? "text-fg" : "text-fg-2 hover:text-fg",
@@ -138,12 +153,12 @@ export function Navbar() {
                   variants={{ hidden: { opacity: 0, x: -14 }, show: { opacity: 1, x: 0, transition: { duration: 0.4, ease: EASE } } }}
                 >
                   <NavLink
-                    href={hrefFor(item.id)}
-                    isHome={isHome}
+                    href={itemHref(item)}
                     onClick={close}
+                    aria-current={currentFor(item)}
                     className={cn(
                       "flex items-center justify-between rounded-xl px-4 py-3.5 font-display text-lg font-semibold transition-colors hover:bg-white/[0.05]",
-                      isHome && active === item.id ? "text-fg" : "text-fg-2",
+                      currentFor(item) ? "text-fg" : "text-fg-2",
                     )}
                   >
                     {item.label}
@@ -200,11 +215,11 @@ function ButtonArrowStatic() {
   );
 }
 
-type NavLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; isHome: boolean };
+type NavLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & { href: string };
 
-/** Plain anchors for in-page hashes (native smooth scroll); next/link when jumping back to the home page. */
-function NavLink({ href, isHome, children, ...rest }: NavLinkProps) {
-  if (isHome) {
+/** Plain anchors for in-page hashes (native smooth scroll); next/link for routes, including back to the home page. */
+function NavLink({ href, children, ...rest }: NavLinkProps) {
+  if (href.startsWith("#")) {
     return (
       <a href={href} {...rest}>
         {children}

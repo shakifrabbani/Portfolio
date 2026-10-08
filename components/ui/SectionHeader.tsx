@@ -8,11 +8,13 @@ type SectionHeaderProps = {
   description?: ReactNode;
   action?: ReactNode;
   id?: string;
+  /** Heading level: "h1" when the header titles its own page, "h2" for a section of the home page. */
+  as?: "h1" | "h2";
   className?: string;
 };
 
 /** Label + heading on the left, supporting copy or an action on the right, as in the design. */
-export function SectionHeader({ label, title, description, action, id, className }: SectionHeaderProps) {
+export function SectionHeader({ label, title, description, action, id, as: Heading = "h2", className }: SectionHeaderProps) {
   return (
     <div className={cn("mb-10 flex flex-col gap-5 md:mb-12 md:flex-row md:items-end md:justify-between", className)}>
       <div className="max-w-2xl">
@@ -20,9 +22,9 @@ export function SectionHeader({ label, title, description, action, id, className
           <p className="section-label">{label}</p>
         </Reveal>
         <Reveal delay={0.06}>
-          <h2 id={id} className="section-title mt-3">
+          <Heading id={id} className="section-title mt-3">
             {title}
-          </h2>
+          </Heading>
         </Reveal>
       </div>
       {(description || action) && (

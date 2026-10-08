@@ -41,7 +41,7 @@ export function Footer() {
         <p>
           © {year} {profile.name}. All rights reserved.
         </p>
-        <a href="#home" className="group inline-flex items-center gap-1.5 rounded-lg px-2 py-1 transition-colors hover:text-fg">
+        <a href="#top" className="group inline-flex items-center gap-1.5 rounded-lg px-2 py-1 transition-colors hover:text-fg">
           Back to top <ArrowUp className="size-3.5 transition-transform duration-300 group-hover:-translate-y-0.5" aria-hidden="true" />
         </a>
       </div>
