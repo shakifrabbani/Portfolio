@@ -4,7 +4,23 @@ export type Platform = "web" | "desktop" | "mobile";
 export type PreviewVariant = "restaurant" | "pos" | "salon" | "inspection" | "services" | "jobs";
 export type SurfaceKind = Platform | "store" | "service";
 
-export interface Project {
+/**
+ * Design poster under /public. Fills its frame on project cards and the case study, which take the poster's
+ * own aspect ratio, so nothing is cropped. A landscape image around 16:9 suits the card grid.
+ */
+export interface Poster {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  /**
+   * Buttons drawn on the poster that become real links on the case study: "live" opens links.live and
+   * "details" jumps to the write-up. `area` is [left, top, width, height] in % of the poster.
+   */
+  actions?: { label: string; target: "live" | "details"; area: [number, number, number, number] }[];
+}
+
+interface ProjectInfo {
   slug: string;
   title: string;
   category: string;
@@ -25,26 +41,19 @@ export interface Project {
   backend: string;
   stack: TechKey[];
   links: { live?: string; github?: string };
-  preview: PreviewVariant;
   accent: [string, string];
-  /** Optional real screenshot under /public (e.g. "/projects/retail-pos.webp"). Replaces the coded preview everywhere. */
-  screenshot?: string;
-  /**
-   * Optional design poster under /public. Fills its frame on project cards and the case study, which take
-   * the poster's own aspect ratio, so nothing is cropped. A landscape image around 16:9 suits the card grid.
-   */
-  poster?: {
-    src: string;
-    width: number;
-    height: number;
-    alt: string;
-    /**
-     * Buttons drawn on the poster that become real links on the case study: "live" opens links.live and
-     * "details" jumps to the write-up. `area` is [left, top, width, height] in % of the poster.
-     */
-    actions?: { label: string; target: "live" | "details"; area: [number, number, number, number] }[];
-  };
 }
+
+/**
+ * Every project needs a picture: a real screenshot under /public (e.g. "/projects/retail-pos.webp"), a poster,
+ * or else a coded interface preview. A screenshot wins over a poster, and either replaces the preview.
+ */
+type ProjectPicture =
+  | { preview: PreviewVariant; screenshot?: string; poster?: Poster }
+  | { preview?: undefined; screenshot: string; poster?: Poster }
+  | { preview?: undefined; screenshot?: string; poster: Poster };
+
+export type Project = ProjectInfo & ProjectPicture;
 
 /**
  * Content is limited to what the CV or the public repository states.
@@ -86,6 +95,44 @@ export const projects: Project[] = [
       width: 1672,
       height: 941,
       alt: "Hot & Spicy restaurant management system: the admin dashboard on a laptop, the POS ordering screen on a tablet and the kitchen display on a second tablet, covering POS, admin dashboard, kitchen display, menu management, reservations, orders and billing, and analytics.",
+    },
+  },
+  {
+    slug: "iramali-fashion-store",
+    title: "IRAMALI Fashion Store",
+    category: "E-Commerce Platform",
+    year: "2026",
+    context: "Client project",
+    role: "Full-Stack Developer",
+    summary: "Women's fashion store for ready-to-wear, unstitched fabric and custom printing, with an admin panel that runs the shop.",
+    overview:
+      "An online store for the IRAMALI women's fashion label. Shoppers browse ready-to-wear, unstitched fabric, accessories and custom printing and order with cash on delivery across Pakistan, while the team manages the whole store from an admin panel.",
+    problem: "A fashion label needs an online store that presents its collections well, takes orders nationwide and can be run by its own team.",
+    solution: "A React storefront and an admin panel on a Firebase and Node.js back end, so the team manages products and orders in one place.",
+    features: [
+      "Product catalogue with category navigation",
+      "Best sellers and new arrivals",
+      "Wishlist and cart",
+      "Responsive design for phone, tablet and desktop",
+      "Admin panel to manage the store",
+      "Live at iramali.pk",
+    ],
+    responsibilities: ["Development across the shopping website and admin panel.", "Firebase and Node.js back-end integration."],
+    outcome: "Live at iramali.pk.",
+    platforms: ["web"],
+    surfaces: [
+      { label: "Shopping website", kind: "web" },
+      { label: "Admin panel", kind: "web" },
+    ],
+    backend: "Firebase + Node.js",
+    stack: ["react", "firebase", "nodejs"],
+    links: { live: "https://iramali.pk" },
+    accent: ["#c8a27a", "#8b6a4f"],
+    poster: {
+      src: "/projects/iramali-fashion-store-showcase.webp",
+      width: 1672,
+      height: 941,
+      alt: "IRAMALI fashion e-commerce website: the storefront on a laptop, best sellers on a phone and the jewellery collection on a tablet, highlighting the product catalogue, best sellers, wishlist and cart, responsive design and Firebase integration.",
     },
   },
   {
@@ -244,6 +291,21 @@ export const projects: Project[] = [
 ];
 
 export const caseStudySlug = "retail-pos-system";
+
+/**
+ * Projects in the home-page grid (three per row, in the order above); the projects page lists every project.
+ * Home Service Platform is the one left out.
+ */
+export const featuredSlugs = [
+  "hot-spicy-restaurant-system",
+  "iramali-fashion-store",
+  "retail-pos-system",
+  "humas-signature-salon",
+  "property-inspection-app",
+  "smart-job-portal",
+];
+
+export const featuredProjects = projects.filter((project) => featuredSlugs.includes(project.slug));
 
 export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug);

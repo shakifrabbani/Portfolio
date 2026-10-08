@@ -10,7 +10,7 @@ export function CaseStudyVisual({ project }: { project: Project }) {
       <div className="absolute inset-[10%] rounded-full bg-[radial-gradient(closest-side,rgb(108_99_255/0.35),transparent)] blur-2xl" />
 
       <div className="relative overflow-hidden rounded-2xl border border-line-strong shadow-[0_40px_90px_-40px_rgb(0_0_0/1),0_0_0_1px_rgb(255_255_255/0.03)]">
-        <ProjectPreview variant={project.preview} accent={project.accent} idPrefix="case-study" />
+        <ProjectPreview variant="pos" accent={project.accent} idPrefix="case-study" />
       </div>
 
       <div className="animate-float-slow absolute -left-1 top-1 sm:left-0">

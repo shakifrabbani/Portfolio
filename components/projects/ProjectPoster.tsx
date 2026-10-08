@@ -1,9 +1,7 @@
 import { Maximize2 } from "lucide-react";
 import Image from "next/image";
-import type { Project } from "@/data/projects";
+import type { Poster } from "@/data/projects";
 import { withBasePath } from "@/lib/utils";
-
-type Poster = NonNullable<Project["poster"]>;
 
 /**
  * Design poster filling its rounded frame edge to edge, never cropped: the frame takes the poster's shape,

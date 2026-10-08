@@ -40,5 +40,6 @@ export function ProjectVisual({ project, idPrefix, priority = false, sizes = "(m
     );
   }
 
-  return <ProjectPreview variant={project.preview} accent={project.accent} idPrefix={idPrefix} />;
+  // The Project type guarantees a preview when there is no screenshot or poster.
+  return project.preview ? <ProjectPreview variant={project.preview} accent={project.accent} idPrefix={idPrefix} /> : null;
 }
