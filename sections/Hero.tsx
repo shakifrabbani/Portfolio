@@ -29,7 +29,7 @@ export function Hero() {
     <section
       id="home"
       aria-labelledby="hero-title"
-      className="relative flex flex-col justify-center overflow-hidden pb-8 pt-24 sm:pt-28 lg:min-h-[100svh] lg:pb-10 lg:pt-[88px]"
+      className="relative flex flex-col justify-center overflow-hidden pb-8 pt-24 sm:pt-28 lg:min-h-[100svh] lg:pb-4 lg:pt-[84px]"
     >
       {/* Hero-only atmosphere: soft glow and a few slow particles (fewer on small screens). */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -43,8 +43,8 @@ export function Hero() {
         ))}
       </div>
 
-      <div className="container-site relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-8">
-        <div className="lg:pl-6 xl:pl-12">
+      <div className="container-site relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-8">
+        <div>
           <p style={delay(0)} className="intro inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-fg-2">
             <span className="relative grid size-2 place-items-center">
               <span className="animate-ping-soft absolute inset-0 rounded-full bg-success" />
