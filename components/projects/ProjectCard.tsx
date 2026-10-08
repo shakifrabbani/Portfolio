@@ -1,13 +1,14 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { ProjectVisual } from "@/components/projects/ProjectVisual";
+import { Button, ButtonArrow } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { TechIcon, techLabel } from "@/components/ui/TechIcon";
 import type { Project } from "@/data/projects";
 
 /**
  * The whole card opens the case study through a stretched title link, so a project with a live site can
- * also offer its own "Visit Site" link above it, beside the category, without nesting anchors.
+ * also offer its own "Visit Site" link above it without nesting anchors.
  * Hover: preview parallax + scale, spotlight glow, arrow lifts diagonally.
  */
 export function ProjectCard({ project }: { project: Project }) {
@@ -35,30 +36,13 @@ export function ProjectCard({ project }: { project: Project }) {
             {project.title}
           </Link>
         </h3>
-        <div className="mt-2 flex flex-wrap items-center gap-2">
-          <span className="inline-flex w-fit rounded-md border border-accent/25 bg-accent/10 px-2 py-0.5 text-[11px] font-medium text-accent-ink">
-            {project.category}
-          </span>
-          {project.links.live && (
-            <a
-              href={project.links.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Visit the ${project.title} live site`}
-              className="relative z-[2] inline-flex min-h-6 items-center gap-1.5 rounded-md border border-success/30 bg-success/10 px-2 py-1 text-[11px] font-medium leading-none text-success transition-colors duration-300 hover:border-success/60 hover:bg-success/20"
-            >
-              <span className="relative grid size-1.5 place-items-center" aria-hidden="true">
-                <span className="animate-ping-soft absolute inset-0 rounded-full bg-success" />
-                <span className="relative size-1.5 rounded-full bg-success" />
-              </span>
-              Visit Site
-              <ArrowUpRight className="size-3" aria-hidden="true" />
-            </a>
-          )}
-        </div>
+        <span className="mt-2 inline-flex w-fit rounded-md border border-accent/25 bg-accent/10 px-2 py-0.5 text-[11px] font-medium text-accent-ink">
+          {project.category}
+        </span>
         <p className="mt-3 line-clamp-3 text-[13px] leading-relaxed text-fg-2">{project.summary}</p>
 
-        <div className="mt-auto flex items-center justify-between gap-3 pt-5">
+        {/* Wraps instead of overflowing: on narrow cards the buttons drop below the icons, still on the right. */}
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-5">
           <ul className="flex items-center gap-1.5 opacity-75 transition-opacity duration-300 group-hover:opacity-100" aria-label="Built with">
             {project.stack.length
               ? project.stack.slice(0, 5).map((key) => (
@@ -74,12 +58,26 @@ export function ProjectCard({ project }: { project: Project }) {
                   </li>
                 ))}
           </ul>
-          <span className="grid size-9 shrink-0 place-items-center rounded-full border border-line-strong text-fg-2 transition-[background-color,border-color,color] duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white">
-            <ArrowUpRight
-              className="size-4 transition-transform duration-300 ease-[var(--ease-premium)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-              aria-hidden="true"
-            />
-          </span>
+          <div className="ml-auto flex items-center gap-2">
+            {project.links.live && (
+              <Button
+                href={project.links.live}
+                variant="secondary"
+                size="sm"
+                external
+                ariaLabel={`Visit the ${project.title} live site`}
+                className="z-[2] h-9 px-3"
+              >
+                Visit Site <ButtonArrow diagonal />
+              </Button>
+            )}
+            <span className="grid size-9 shrink-0 place-items-center rounded-full border border-line-strong text-fg-2 transition-[background-color,border-color,color] duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white">
+              <ArrowUpRight
+                className="size-4 transition-transform duration-300 ease-[var(--ease-premium)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </span>
+          </div>
         </div>
       </div>
     </article>

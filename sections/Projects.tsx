@@ -12,7 +12,6 @@ export function Projects() {
           id="projects-title"
           label="Featured projects"
           title="Selected Work"
-          description="A selection of products and systems I have designed and developed."
           action={
             <Button href="/projects/" variant="secondary" size="sm">
               View All Projects <ButtonArrow />

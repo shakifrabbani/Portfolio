@@ -86,7 +86,7 @@ export const projects: Project[] = [
       { label: "Mobile app", kind: "mobile" },
     ],
     backend: "Node.js + MySQL",
-    stack: ["react", "nextjs", "tailwind", "nodejs", "mysql"],
+    stack: ["react", "tailwind", "nodejs", "mysql"],
     links: { live: "https://gray-dog-901682.hostingersite.com/site/" },
     preview: "restaurant",
     accent: ["#f97316", "#ef4444"],
