@@ -4,7 +4,7 @@ import { GitHubIcon } from "@/components/ui/BrandIcons";
 import { Button, ButtonArrow } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { heroStats, profile } from "@/data/profile";
-import { delay, withBasePath } from "@/lib/utils";
+import { cn, delay, withBasePath } from "@/lib/utils";
 
 const particles = [
   { left: "6%", top: "22%", size: 3, d: "0s" },
@@ -44,7 +44,7 @@ export function Hero() {
       </div>
 
       <div className="container-site relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-8">
-        <div>
+        <div className="lg:pl-6 xl:pl-12">
           <p style={delay(0)} className="intro inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-fg-2">
             <span className="relative grid size-2 place-items-center">
               <span className="animate-ping-soft absolute inset-0 rounded-full bg-success" />
@@ -98,7 +98,7 @@ export function Hero() {
 
           <ul
             style={delay(600)}
-            className="intro mt-[clamp(1.1rem,3.4vh,2.1rem)] grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4 sm:gap-x-4"
+            className="intro mt-[clamp(1.1rem,3.4vh,2.1rem)] grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4 sm:gap-x-4 lg:grid-cols-2 xl:grid-cols-[auto_auto_minmax(0,1fr)_auto]"
             aria-label="Highlights"
           >
             {heroStats.map((stat) => (
@@ -108,7 +108,7 @@ export function Hero() {
                 </span>
                 <span>
                   <span className="block text-sm font-semibold leading-tight text-fg">{stat.value}</span>
-                  <span className="mt-0.5 block text-[11.5px] leading-snug text-fg-3">{stat.label}</span>
+                  <span className={cn("mt-0.5 block text-[11.5px] leading-snug text-fg-3", stat.icon !== "layers" && "xl:whitespace-nowrap")}>{stat.label}</span>
                 </span>
               </li>
             ))}

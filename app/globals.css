@@ -245,9 +245,12 @@
   }
 
   /* Hero portrait fades into the page instead of ending in a hard edge. */
+  /* The right edge also fades, softening the straight cut left on the hoodie by the source photo. */
   .portrait-fade {
-    -webkit-mask-image: linear-gradient(to bottom, #000 58%, transparent 96%);
-    mask-image: linear-gradient(to bottom, #000 58%, transparent 96%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 58%, transparent 96%), linear-gradient(to left, transparent 0%, #000 16%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to bottom, #000 58%, transparent 96%), linear-gradient(to left, transparent 0%, #000 16%);
+    mask-composite: intersect;
   }
 
   /* Soft fade for full-bleed decorative grids. */

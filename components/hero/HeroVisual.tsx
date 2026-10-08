@@ -48,7 +48,7 @@ export function HeroVisual() {
   }, [reduce, mx, my]);
 
   return (
-    <div ref={ref} className="@container relative mx-auto aspect-square w-full max-w-[520px] lg:max-w-[min(640px,calc(100svh_-_140px))]">
+    <div ref={ref} className="@container relative mx-auto aspect-square w-full max-w-[520px] lg:mr-0 lg:max-w-[min(640px,calc(100svh_-_140px))]">
       <m.div style={{ y: drift }} className="absolute inset-0">
         {/* Back layer: deep glow, faint grid and the neon ring. Centred; shifts left on wide screens to make room for the cards. */}
         <m.div style={back} className="absolute inset-0" aria-hidden="true">
