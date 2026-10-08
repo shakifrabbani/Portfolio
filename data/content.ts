@@ -98,7 +98,7 @@ export const timeline: TimelineEntry[] = [
     summary:
       "Building full-stack web, mobile and desktop products for real clients, from the interface to the database, both independently and as part of a team.",
     highlights: [
-      "Delivered five client products across web, mobile and desktop in six months.",
+      "Delivered multiple client projects across web, mobile and desktop in six months.",
       "Built features end to end with React and React Native interfaces and Node.js, Express.js and PHP back ends.",
       "Worked across MySQL, MongoDB and Firebase data layers.",
       "Developed desktop POS apps that run online and offline for retail and restaurant clients.",
