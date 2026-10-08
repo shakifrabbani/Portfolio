@@ -59,7 +59,7 @@ export type Project = ProjectInfo & ProjectPicture;
  * Content is limited to what the CV or the public repository states.
  * Add screenshots, metrics and extra detail here as you collect them.
  */
-export const projects: Project[] = [
+const projectList: Project[] = [
   {
     slug: "hot-spicy-restaurant-system",
     title: "Hot & Spicy Restaurant System",
@@ -295,10 +295,16 @@ export const projects: Project[] = [
   },
 ];
 
+/**
+ * Every project, with those that have a live site first so they lead the home grid and the projects page.
+ * The sort is stable: within each group, projects keep the order written above.
+ */
+export const projects = [...projectList].sort((a, b) => Number(Boolean(b.links.live)) - Number(Boolean(a.links.live)));
+
 export const caseStudySlug = "retail-pos-system";
 
 /**
- * Projects in the home-page grid (three per row, in the order above); the projects page lists every project.
+ * Projects in the home-page grid (three per row, live sites first); the projects page lists every project.
  * Home Service Platform is the one left out.
  */
 export const featuredSlugs = [
