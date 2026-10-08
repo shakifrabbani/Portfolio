@@ -43,7 +43,7 @@ export function Hero() {
         ))}
       </div>
 
-      <div className="container-site relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[26rem_minmax(0,min(640px,calc(100svh_-_104px)))] lg:justify-center lg:gap-x-12 xl:grid-cols-[31rem_minmax(0,min(640px,calc(100svh_-_104px)))] xl:gap-x-16">
+      <div className="container-site @container relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-8 xl:max-w-[1480px] xl:grid-cols-[31rem_auto] xl:justify-center xl:gap-x-16">
         <div>
           <p style={delay(0)} className="intro inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-fg-2">
             <span className="relative grid size-2 place-items-center">

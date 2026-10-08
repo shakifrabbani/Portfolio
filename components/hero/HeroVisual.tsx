@@ -15,12 +15,13 @@ function useDepth(x: MotionValue<number>, y: MotionValue<number>, depth: number)
 
 /**
  * Hero composition from the design: cut-out portrait whose head rises above a glowing neon ring,
- * with floating technology tiles around it.
+ * floating technology tiles, and on screens 1280px and wider a status widget and code card in a lane
+ * to the right of the photo.
  *
- * Every element stays inside the box, and on desktop the box sits flush with the right edge of the
- * content area, so the hero keeps equal left and right margins. The box is a CSS size container:
- * tiles are sized in cqw and scale with it, and the box is capped by the viewport height so the
- * hero always fits one screen. Mouse parallax runs on three depth layers; the group drifts on scroll.
+ * Sizing: the outer wrapper is the portrait box plus that lane (1.39 × box width on xl). Its width is
+ * capped by the viewport height (so the hero fits one screen) and by the space left beside the text
+ * (100cqw of the hero grid minus the text column and gap), so margins stay equal. The portrait box is a
+ * CSS size container: tiles and cards are sized in cqw and scale as one unit with it.
  */
 export function HeroVisual() {
   const ref = useRef<HTMLDivElement>(null);
@@ -35,6 +36,7 @@ export function HeroVisual() {
   const back = useDepth(sx, sy, -12);
   const person = useDepth(sx, sy, 8);
   const tiles = useDepth(sx, sy, 20);
+  const cards = useDepth(sx, sy, 30);
 
   useEffect(() => {
     if (reduce || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
@@ -47,49 +49,60 @@ export function HeroVisual() {
   }, [reduce, mx, my]);
 
   return (
-    <div ref={ref} className="@container relative mx-auto aspect-square w-full max-w-[520px] lg:mr-0 lg:max-w-[min(640px,calc(100svh_-_104px))]">
-      <m.div style={{ y: drift }} className="absolute inset-0">
-        {/* Back layer: deep glow, faint grid and the neon ring */}
-        <m.div style={back} className="absolute inset-0" aria-hidden="true">
-          <div className="intro-fade absolute inset-0">
-            <div className="absolute left-1/2 top-[56%] aspect-square h-[96%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgb(76_70_229/0.42),rgb(59_130_246/0.14)_42%,transparent_68%)]" />
-            <div className="bg-grid absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_at_center,#000_22%,transparent_68%)]" />
-            <NeonRing />
-          </div>
-        </m.div>
+    <div
+      ref={ref}
+      className="relative mx-auto w-full max-w-[520px] lg:mr-0 lg:max-w-[min(640px,calc(100svh_-_104px))] xl:w-[min(890px,calc((100svh_-_104px)*1.39),calc(100cqw_-_35rem))] xl:max-w-none"
+    >
+      <div className="@container relative aspect-square w-full xl:w-[72%]">
+        <m.div style={{ y: drift }} className="absolute inset-0">
+          {/* Back layer: deep glow, faint grid and the neon ring */}
+          <m.div style={back} className="absolute inset-0" aria-hidden="true">
+            <div className="intro-fade absolute inset-0">
+              <div className="absolute left-1/2 top-[56%] aspect-square h-[96%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgb(76_70_229/0.42),rgb(59_130_246/0.14)_42%,transparent_68%)]" />
+              <div className="bg-grid absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_at_center,#000_22%,transparent_68%)]" />
+              <NeonRing />
+            </div>
+          </m.div>
 
-        {/* Portrait: fills most of the box height; the head rises above the top of the ring. */}
-        <m.div style={person} className="absolute inset-y-0 left-[6%] right-[6%]">
-          <div style={delay(150)} className="intro-fade h-full w-full">
-            <Image
-              src={portrait}
-              alt="Portrait of M. Shakif Rabbani"
-              priority
-              sizes="(min-width: 1024px) 560px, 88vw"
-              className="portrait-fade h-full w-full object-contain object-bottom drop-shadow-[0_0_38px_rgb(124_58_237/0.4)]"
-            />
-          </div>
-        </m.div>
+          {/* Portrait: fills most of the box height; the head rises above the top of the ring. */}
+          <m.div style={person} className="absolute inset-y-0 left-[6%] right-[6%]">
+            <div style={delay(150)} className="intro-fade h-full w-full">
+              <Image
+                src={portrait}
+                alt="Portrait of M. Shakif Rabbani"
+                priority
+                sizes="(min-width: 1024px) 560px, 88vw"
+                className="portrait-fade h-full w-full object-contain object-bottom drop-shadow-[0_0_38px_rgb(124_58_237/0.4)]"
+              />
+            </div>
+          </m.div>
 
-        {/* Floating technology tiles, kept clear of the face and shoulders */}
-        <m.div style={tiles} className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <FloatTile className="left-[3%] top-[7%]" d={500} float="animate-float">
-            <TechIcon name="react" className="size-[6cqw]" />
-          </FloatTile>
-          <FloatTile className="left-[-1%] top-[36%]" d={650} float="animate-float-slow">
-            <TechIcon name="nodejs" className="size-[6cqw]" />
-          </FloatTile>
-          <FloatTile className="left-0 top-[64%]" d={800} float="animate-float">
-            <TechIcon name="typescript" className="size-[5.2cqw]" />
-          </FloatTile>
-          <FloatTile className="right-[10%] top-[3%]" d={700} float="animate-float-slow">
-            <FigmaLogo className="h-[6cqw] w-auto" />
-          </FloatTile>
-          <FloatTile className="right-0 top-[33%]" d={900} float="animate-float">
-            <CodeXml className="size-[5.6cqw] text-accent-ink" strokeWidth={2} />
-          </FloatTile>
+          {/* Floating technology tiles, kept clear of the face and shoulders */}
+          <m.div style={tiles} className="pointer-events-none absolute inset-0" aria-hidden="true">
+            <FloatTile className="left-[3%] top-[7%]" d={500} float="animate-float">
+              <TechIcon name="react" className="size-[6cqw]" />
+            </FloatTile>
+            <FloatTile className="left-[-1%] top-[36%]" d={650} float="animate-float-slow">
+              <TechIcon name="nodejs" className="size-[6cqw]" />
+            </FloatTile>
+            <FloatTile className="left-0 top-[64%]" d={800} float="animate-float">
+              <TechIcon name="typescript" className="size-[5.2cqw]" />
+            </FloatTile>
+            <FloatTile className="right-[10%] top-[3%]" d={700} float="animate-float-slow">
+              <FigmaLogo className="h-[6cqw] w-auto" />
+            </FloatTile>
+            <FloatTile className="right-0 top-[33%]" d={900} float="animate-float">
+              <CodeXml className="size-[5.6cqw] text-accent-ink" strokeWidth={2} />
+            </FloatTile>
+          </m.div>
+
+          {/* Widget and code card in the lane right of the photo (xl and up). The code card only overlaps the faded hoodie edge. */}
+          <m.div style={cards} className="pointer-events-none absolute inset-0">
+            <BuildingWidget />
+            <CodeCard />
+          </m.div>
         </m.div>
-      </m.div>
+      </div>
     </div>
   );
 }
@@ -140,6 +153,78 @@ function FloatTile({ children, className, d, float }: { children: ReactNode; cla
         style={{ animationDelay: `${-d * 3}ms` }}
       >
         {children}
+      </div>
+    </div>
+  );
+}
+
+const solutions = [
+  { label: "Web Applications", tone: "bg-success" },
+  { label: "Mobile Applications", tone: "bg-success" },
+  { label: "Business Systems", tone: "bg-accent-soft" },
+  { label: "API Development", tone: "bg-accent-blue" },
+];
+
+function BuildingWidget() {
+  return (
+    <div data-hero-card="" style={delay(1000)} className="intro absolute left-[102%] top-[2%] hidden w-[37cqw] xl:block" aria-hidden="true">
+      <div className="rounded-[3cqw] border border-white/10 bg-surface/75 p-[3cqw] shadow-[0_24px_50px_-24px_rgb(0_0_0/0.95)] backdrop-blur-md">
+        <p className="text-[2.1cqw] font-medium uppercase tracking-[0.14em] text-fg-3">Building</p>
+        <p className="mt-[0.4cqw] text-[2.7cqw] font-semibold text-fg">Modern Solutions</p>
+        <ul className="mt-[2.3cqw] space-y-[1.4cqw]">
+          {solutions.map((item, i) => (
+            <li key={item.label} className="flex items-center gap-[1.8cqw] text-[2.4cqw] text-fg-2">
+              <span className="relative grid size-[1.8cqw] place-items-center">
+                <span className={cn("animate-ping-soft absolute inset-0 rounded-full", item.tone)} style={{ animationDelay: `${i * 450}ms` }} />
+                <span className={cn("relative size-[1.8cqw] rounded-full", item.tone)} />
+              </span>
+              {item.label}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function CodeCard() {
+  return (
+    <div data-hero-card="" style={delay(1150)} className="intro absolute bottom-[10%] left-[90%] hidden w-[49cqw] xl:block" aria-hidden="true">
+      <div className="overflow-hidden rounded-[3cqw] border border-violet-400/25 bg-[#0b0f1d]/90 shadow-[0_30px_60px_-28px_rgb(0_0_0/1),0_0_32px_-12px_rgb(124_58_237/0.6)] backdrop-blur-md">
+        <div className="flex items-center gap-[1.3cqw] border-b border-white/[0.06] px-[3cqw] py-[2.2cqw]">
+          <span className="size-[2.1cqw] rounded-full bg-[#ff5f57]" />
+          <span className="size-[2.1cqw] rounded-full bg-[#febc2e]" />
+          <span className="size-[2.1cqw] rounded-full bg-[#28c840]" />
+          <span className="ml-[1.8cqw] font-mono text-[2.1cqw] text-fg-3">developer.ts</span>
+        </div>
+        <pre className="px-[3cqw] py-[2.8cqw] font-mono text-[2.3cqw] leading-[1.75]">
+          <code>
+            <span className="text-[#c792ea]">const</span> <span className="text-[#82aaff]">developer</span> <span className="text-fg-3">=</span>{" "}
+            <span className="text-fg-2">{"{"}</span>
+            {"\n"}
+            {"  "}
+            <span className="text-[#89ddff]">role</span>
+            <span className="text-fg-3">:</span> <span className="text-[#f78c6c]">&quot;Software Engineer&quot;</span>
+            <span className="text-fg-3">,</span>
+            {"\n"}
+            {"  "}
+            <span className="text-[#89ddff]">focus</span>
+            <span className="text-fg-3">:</span> <span className="text-[#f78c6c]">&quot;Full Stack&quot;</span>
+            <span className="text-fg-3">,</span>
+            {"\n"}
+            {"  "}
+            <span className="text-[#89ddff]">passion</span>
+            <span className="text-fg-3">:</span> <span className="text-[#f78c6c]">&quot;Building Products&quot;</span>
+            <span className="text-fg-3">,</span>
+            {"\n"}
+            {"  "}
+            <span className="text-[#89ddff]">status</span>
+            <span className="text-fg-3">:</span> <span className="text-[#c3e88d]">&quot;Available&quot;</span>
+            {"\n"}
+            <span className="text-fg-2">{"}"}</span>
+            <span className="animate-blink ml-0.5 inline-block h-[1.05em] w-[0.5em] translate-y-[0.18em] bg-accent-soft" />
+          </code>
+        </pre>
       </div>
     </div>
   );
