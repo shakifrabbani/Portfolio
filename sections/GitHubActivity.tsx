@@ -5,7 +5,7 @@ import { CountUp } from "@/components/ui/CountUp";
 import { LanguageBars } from "@/components/ui/LanguageBars";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { skillGroups } from "@/data/content";
-import { clientProjectCount } from "@/data/projects";
+import { clientProjectsDelivered } from "@/data/profile";
 import { getGitHubSnapshot } from "@/lib/github";
 
 /** Real numbers only: public repo count and languages come from the GitHub API at build time. */
@@ -15,7 +15,7 @@ export async function GitHubActivity() {
 
   const stats = [
     { value: github.publicRepos, label: "Public repositories", icon: <FolderGit2 className="size-4" /> },
-    { value: clientProjectCount, suffix: "+", label: "Client products in private repos", icon: <Lock className="size-4" /> },
+    { value: clientProjectsDelivered, suffix: "+", label: "Client projects in private repos", icon: <Lock className="size-4" /> },
     { value: technologies, label: "Tools and technologies", icon: <GitHubIcon className="size-4" /> },
   ];
 

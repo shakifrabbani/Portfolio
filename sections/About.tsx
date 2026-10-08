@@ -5,8 +5,7 @@ import { JourneyChart } from "@/components/ui/JourneyChart";
 import { MaskReveal } from "@/components/ui/MaskReveal";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { principles } from "@/data/content";
-import { profile } from "@/data/profile";
-import { clientProjectCount } from "@/data/projects";
+import { clientProjectsDelivered, profile } from "@/data/profile";
 
 export function About() {
   return (
@@ -60,9 +59,9 @@ export function About() {
               <JourneyChart />
             </div>
             <p className="relative mt-3 font-display text-5xl font-extrabold tracking-tight text-fg">
-              <CountUp value={clientProjectCount} suffix="+" />
+              <CountUp value={clientProjectsDelivered} suffix="+" />
             </p>
-            <p className="relative mt-1 text-[13px] text-fg-2">Client products shipped</p>
+            <p className="relative mt-1 text-[13px] text-fg-2">Client projects delivered</p>
           </div>
         </Reveal>
       </div>

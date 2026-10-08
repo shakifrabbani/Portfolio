@@ -46,10 +46,16 @@ export const profile = {
   },
 } as const;
 
-/** Hero stat row. The client product count comes from data/projects.ts; 10+ adds the six public GitHub repositories. */
+/**
+ * Client projects delivered: 10+, as stated by Shakif, though the site lists only some of them. Never shown lower
+ * than the client projects listed in data/projects.ts. The hero, About and GitHub sections all use it.
+ */
+export const clientProjectsDelivered = Math.max(10, clientProjectCount);
+
+/** Hero stat row. 15+ projects built = 10+ client projects plus the six public GitHub repositories. */
 export const heroStats = [
-  { value: `${clientProjectCount}+`, label: "Client products", icon: "package" },
-  { value: "10+", label: "Projects built", icon: "folder" },
+  { value: `${clientProjectsDelivered}+`, label: "Client projects", icon: "package" },
+  { value: "15+", label: "Projects built", icon: "folder" },
   { value: "Full-Stack", label: "Web, Mobile & Backend", icon: "layers" },
   { value: "Available", label: "For opportunities", icon: "heart" },
 ] as const;

@@ -323,10 +323,7 @@ export const featuredSlugs = [
 
 export const featuredProjects = projects.filter((project) => featuredSlugs.includes(project.slug));
 
-/**
- * Client products in the list above. The hero, About and GitHub sections all show this number with a "+",
- * since not every client project is listed here, so adding a project updates them all.
- */
+/** Client projects listed above. The figure shown on the site, clientProjectsDelivered in data/profile.ts, never falls below it. */
 export const clientProjectCount = projects.filter((project) => project.context.startsWith("Client")).length;
 
 export function getProject(slug: string) {
