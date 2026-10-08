@@ -30,7 +30,17 @@ export interface Project {
   /** Optional real screenshot under /public (e.g. "/projects/retail-pos.webp"). Replaces the coded preview everywhere. */
   screenshot?: string;
   /** Optional design poster under /public. Shown whole, never cropped, on project cards and the case study. */
-  poster?: { src: string; width: number; height: number; alt: string };
+  poster?: {
+    src: string;
+    width: number;
+    height: number;
+    alt: string;
+    /**
+     * Buttons drawn on the poster that become real links on the case study: "live" opens links.live and
+     * "details" jumps to the write-up. `area` is [left, top, width, height] in % of the poster.
+     */
+    actions?: { label: string; target: "live" | "details"; area: [number, number, number, number] }[];
+  };
 }
 
 /**
@@ -126,10 +136,14 @@ export const projects: Project[] = [
     preview: "salon",
     accent: ["#f472b6", "#f59e0b"],
     poster: {
-      src: "/projects/humas-signature-salon-poster.webp",
-      width: 1122,
-      height: 1402,
-      alt: "Huma's Signature Salon project poster: the salon management system shown on laptop, tablet and phone screens, highlighting online booking, services and packages, staff profiles, gallery, pricing and a responsive UI.",
+      src: "/projects/humas-signature-salon-showcase.webp",
+      width: 1672,
+      height: 941,
+      alt: "Huma's Signature Salon management system: the admin dashboard on a laptop and the booking site on a phone, covering appointments and booking, staff, services and packages, payments and POS, customers, and reports.",
+      actions: [
+        { label: "View the live site at humassignaturesalon.com", target: "live", area: [3.47, 87.14, 16.69, 5.1] },
+        { label: "Jump to the case study details", target: "details", area: [20.87, 87.04, 13.52, 5.42] },
+      ],
     },
   },
   {

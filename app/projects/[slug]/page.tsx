@@ -102,7 +102,7 @@ export default async function ProjectPage({ params }: Params) {
 
         <Reveal delay={0.1} y={50} className="mt-12">
           {project.poster ? (
-            <ProjectPoster poster={project.poster} />
+            <ProjectPoster poster={project.poster} liveUrl={project.links.live} />
           ) : (
             <>
               <div className="overflow-hidden rounded-[22px] border border-line-strong shadow-[0_50px_120px_-50px_rgb(108_99_255/0.45)]">
@@ -113,7 +113,7 @@ export default async function ProjectPage({ params }: Params) {
           )}
         </Reveal>
 
-        <div className="mt-20 grid grid-cols-1 gap-5 md:grid-cols-2">
+        <div id="details" className="mt-20 grid grid-cols-1 gap-5 md:grid-cols-2">
           <Reveal>
             <div className="card spotlight h-full p-7">
               <span className="icon-tile size-10">
