@@ -162,8 +162,13 @@ export const projects: Project[] = [
     backend: "PHP + MySQL · online and offline",
     stack: ["react", "php", "mysql"],
     links: {},
-    preview: "pos",
     accent: ["#10b981", "#22d3ee"],
+    poster: {
+      src: "/projects/retail-pos-system-showcase.webp",
+      width: 1672,
+      height: 941,
+      alt: "All-in-one POS system: the sales screen on a desktop monitor, the sales dashboard on a tablet and a printed receipt, highlighting web and Windows desktop apps, online and offline modes, inventory, sales and billing, customers, kitchen display, multi-branch support and reports.",
+    },
   },
   {
     slug: "humas-signature-salon",
